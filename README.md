@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## MORALISIMO Print Studio
 
-## Getting Started
+Landing page y catálogo digital construidos con [Next.js](https://nextjs.org) utilizando el App Router. El proyecto se enfoca en mostrar la propuesta comercial de MORALISIMO y un catálogo vivo de productos conectados a Strapi.
 
-First, run the development server:
+## Requisitos Previos
+
+- Node.js 18+ y npm instalados.
+- Servidor Strapi (o API compatible) exponiendo el endpoint `GET /api/products`.
+- Variables de entorno configuradas en `.env.local`:
+	- `NEXT_PUBLIC_API_BASE_URL`: URL base del backend (por ejemplo, `http://localhost:1337`).
+	- `NEXT_PUBLIC_WHATSAPP_PHONE`: Número de WhatsApp en formato internacional (solo dígitos) para las llamadas a la acción del catálogo.
+
+## Ejecutar en Desarrollo
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visita [http://localhost:3000](http://localhost:3000) en el navegador. La home se encuentra en `/` y el catálogo de productos en `/productos`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Estructura Destacada
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/page.js`: Landing page principal con propuesta de valor y formulario de contacto.
+- `src/app/productos/page.js`: Catálogo dinámico que consume los productos desde Strapi y genera CTA directas a WhatsApp.
+- `next.config.mjs`: Configuración para permitir imágenes remotas del CDN de productos.
 
-## Learn More
+## Despliegue
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Para desplegar el sitio en Vercel u otra plataforma compatible con Next.js, asegúrate de declarar las variables de entorno mencionadas y de que tu backend sea accesible públicamente.

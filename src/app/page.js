@@ -17,6 +17,7 @@ export default function Home() {
           <nav className="hidden md:flex space-x-6 text-sm font-medium" style={{fontFamily: 'Inter, sans-serif'}}>
             <a href="#pvp" className="text-gray-700 hover:text-black transition duration-300">Nuestra Ventaja</a>
             <a href="#servicios" className="text-gray-700 hover:text-black transition duration-300">Servicios</a>
+            <a href="/productos" className="text-gray-700 hover:text-black transition duration-300">Productos</a>
             <a href="#contacto" className="px-4 py-2 bg-[#1A1A1A] text-white rounded-lg hover:bg-red-700 transition duration-300">Solicitar Presupuesto</a>
           </nav>
           <button className="md:hidden text-2xl text-black">☰</button>
