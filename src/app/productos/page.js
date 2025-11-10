@@ -1,5 +1,6 @@
 import { randomUUID } from "crypto";
 import Image from "next/image";
+import supabase from "@/lib/supabaseClient";
 
 export const metadata = {
   title: "Catálogo de Productos | MORALISIMO Print Studio",
@@ -11,8 +12,6 @@ export const revalidate = 0;
 export const dynamic = "force-dynamic";
 
 const FALLBACK_CATEGORY = "Colección General";
-const API_BASE_URL = (process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:1337").replace(/\/$/, "");
-const PRODUCTS_ENDPOINT = `${API_BASE_URL}/api/products`;
 const WHATSAPP_PHONE = (process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "573001234567").replace(/[^\d]/g, "");
 
 const currencyFormatter = new Intl.NumberFormat("es-CO", {
@@ -23,27 +22,21 @@ const currencyFormatter = new Intl.NumberFormat("es-CO", {
 });
 
 async function fetchProducts() {
+  // Consultamos la tabla `inventory` en Supabase. Asumimos que la tabla
+  // se llama `inventory` y sus columnas coinciden con el diccionario de datos.
   try {
-    const response = await fetch(PRODUCTS_ENDPOINT, {
-      headers: {
-        accept: "application/json",
-      },
-      cache: "no-store",
-    });
-
-    if (!response.ok) {
-      console.error(`Error al consultar ${PRODUCTS_ENDPOINT}: ${response.status}`);
+    const { data, error } = await supabase.from("inventory").select("*").limit(1000);
+    if (error) {
+      console.error("Supabase error fetching inventory:", error);
       return { items: [], error: true };
     }
 
-    const payload = await response.json();
-    const rawItems = Array.isArray(payload?.data) ? payload.data : [];
-
+    const rawItems = Array.isArray(data) ? data : [];
     const items = rawItems.map((item) => normalizeProduct(item));
 
     return { items, error: false };
-  } catch (error) {
-    console.error("No fue posible obtener los productos", error);
+  } catch (err) {
+    console.error("Error fetching products from Supabase:", err);
     return { items: [], error: true };
   }
 }
@@ -62,7 +55,15 @@ function normalizeProduct(item) {
         .filter(Boolean)
     : [];
 
-  const images = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
+  let images = [];
+  if (Array.isArray(item.images)) {
+    images = item.images.filter(Boolean);
+  } else if (typeof item.images === "string") {
+    images = item.images
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
 
   return {
   id: item.id ?? item.documentId ?? item.sku ?? randomUUID(),
