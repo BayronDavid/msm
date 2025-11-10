@@ -20,14 +20,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="pvp" className="py-20 sm:py-28 bg-[#fefefe] min-h-screen flex items-center">
+  <section id="pvp" className="pt-10 sm:pt-28 bg-[#fefefe] min-h-screen flex items-start">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl sm:text-5xl text-center mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
               LA <span className="text-[#CC0000]">FÓRMULA</span> DEL PRECIO BAJO Y LA GESTIÓN ÁGIL
             </h2>
-              <div className="container mx-auto px-4">
-                {/* Shared carousel for the three cards */}
-                <div className="max-w-6xl mx-auto">
+              {/* Shared carousel for the three cards */}
+              <div className="max-w-6xl mx-auto">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     {/* Slider column (left on desktop) */}
                     <div className="w-full md:pr-4">
@@ -72,7 +71,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>
           </div>
         </section>
 

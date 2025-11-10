@@ -6,6 +6,7 @@ export default function ImageCarousel({ images = [], interval = 3500, alt = '', 
   const [index, setIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const pointerStartX = useRef(null);
+  const videoRefs = useRef([]);
 
   useEffect(() => {
     if (!images || images.length === 0) return;
@@ -50,6 +51,25 @@ export default function ImageCarousel({ images = [], interval = 3500, alt = '', 
     setIsPaused(false);
   }
 
+  // Play/pause videos depending on active slide
+  useEffect(() => {
+    videoRefs.current.forEach((v, i) => {
+      if (!v) return;
+      try {
+        if (i === index) {
+          // play active video
+          v.currentTime = 0;
+          v.muted = true;
+          v.play().catch(() => {});
+        } else {
+          v.pause();
+        }
+      } catch (err) {
+        // ignore
+      }
+    });
+  }, [index]);
+
   return (
     <div
       className={`relative w-full h-full mb-4 overflow-hidden rounded-lg ${className}`}
@@ -61,37 +81,71 @@ export default function ImageCarousel({ images = [], interval = 3500, alt = '', 
       role="region"
       aria-roledescription="carousel"
     >
-      {images.map((src, i) => (
-        <img
-          key={i}
-          src={src}
-          alt={alt || `slide-${i + 1}`}
-          loading="lazy"
-          className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ease-in-out ${
-            i === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
-          }`}
-          style={{ objectFit: 'cover' }}
-        />
-      ))}
+      {images.map((item, i) => {
+        const src = typeof item === 'string' ? item : item.src;
+        const type = typeof item === 'string' ? (/(\.mp4|\.webm|\.ogg)(\?|$)/i.test(src) ? 'video' : 'image') : item.type || 'image';
+        const isActive = i === index;
+
+        if (type === 'video') {
+          return (
+            <video
+              key={i}
+              ref={(el) => (videoRefs.current[i] = el)}
+              src={src}
+              muted
+              playsInline
+              loop
+              preload="metadata"
+              className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
+              style={{ objectFit: 'cover' }}
+            />
+          );
+        }
+
+        return (
+          <img
+            key={i}
+            src={src}
+            alt={alt || `slide-${i + 1}`}
+            loading="lazy"
+            className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ease-in-out ${
+              isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
+            }`}
+            style={{ objectFit: 'cover' }}
+          />
+        );
+      })}
 
       {/* Prev / Next buttons */}
       <button
-        onClick={prev}
+        onClick={(e) => {
+          e.stopPropagation();
+          prev();
+        }}
+        onPointerDown={(e) => e.stopPropagation()}
         aria-label="Previous slide"
-        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg pointer-events-auto"
       >
+        {/* Left arrow */}
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M12.293 16.293a1 1 0 010-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd" />
+          <path d="M12.707 14.707a1 1 0 01-1.414 0L7.586 11l3.707-3.707a1 1 0 011.414 1.414L10.414 11l2.293 2.293a1 1 0 010 1.414z" />
         </svg>
       </button>
 
       <button
-        onClick={next}
+        onClick={(e) => {
+          e.stopPropagation();
+          next();
+        }}
+        onPointerDown={(e) => e.stopPropagation()}
         aria-label="Next slide"
-        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg"
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg pointer-events-auto"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 rotate-180" viewBox="0 0 20 20" fill="currentColor">
-          <path fillRule="evenodd" d="M12.293 16.293a1 1 0 010-1.414L15.586 11H4a1 1 0 110-2h11.586l-3.293-3.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clipRule="evenodd" />
+        {/* Right arrow */}
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M7.293 5.293a1 1 0 011.414 0L12.414 9.0 8.707 12.707a1 1 0 01-1.414-1.414L10.586 9 7.293 5.707a1 1 0 010-1.414z" />
         </svg>
       </button>
 
