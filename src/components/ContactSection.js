@@ -8,7 +8,7 @@ export default function ContactSection() {
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message || 'Hola, estoy interesado en sus servicios de diseño y producción.')}`;
 
   return (
-    <section id="contacto" className="py-20 sm:py-28 bg-[#f7f7f7] snap-start h-screen">
+    <section id="contacto" className="py-20 sm:py-28 bg-[#f7f7f7] min-h-screen flex items-center">
       <div className="container mx-auto px-4 max-w-2xl text-center">
         <h2 className="text-4xl sm:text-5xl text-center mb-6 text-[#1A1A1A]" style={{fontFamily: 'Bebas Neue, sans-serif'}}>
           CONFÍE EN LA <span className="text-[#CC0000]">EFICIENCIA</span>.

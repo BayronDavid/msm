@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
       </head>
-      <body className="snap-y snap-mandatory">
+      <body>
         <Header />
         {children}
       </body>

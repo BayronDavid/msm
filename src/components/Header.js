@@ -1,22 +1,32 @@
 "use client";
 
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
 export default function Header() {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header id="top" className="sticky top-0 z-50 bg-white shadow-[0_10px_30px_rgba(26,26,26,0.08)]">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <header id="top" className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-[0_10px_30px_rgba(26,26,26,0.08)] transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
+      <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <div className="text-4xl sm:text-5xl font-extrabold tracking-widest leading-none flex items-end border-b-4 border-[#CC0000]" style={{fontFamily: 'Bebas Neue, sans-serif'}}>
+          <div className={`font-extrabold tracking-widest leading-none flex items-end border-b-4 border-[#CC0000] transition-all duration-300 ${isScrolled ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`} style={{fontFamily: 'Bebas Neue, sans-serif'}}>
             <span className="text-[#1A1A1A]">M</span>
             <span className="text-[#CC0000]">S</span>
             <span className="text-[#1A1A1A]">M</span>
           </div>
-          <div className="flex flex-col">
-            <span className="text-xl sm:text-2xl text-black leading-none" style={{fontFamily: 'Bebas Neue, sans-serif'}}>MORALISIMO</span>
-            <span className="text-sm text-gray-600 tracking-wider leading-none mt-1" style={{fontFamily: 'Inter, sans-serif'}}>Print Studio</span>
+          <div className={`flex flex-col transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
+            <span className={`text-black leading-none transition-all duration-300 ${isScrolled ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`} style={{fontFamily: 'Bebas Neue, sans-serif'}}>MORALISIMO</span>
+            <span className={`text-gray-600 tracking-wider leading-none mt-1 transition-all duration-300 ${isScrolled ? 'text-xs' : 'text-sm'}`} style={{fontFamily: 'Inter, sans-serif'}}>Print Studio</span>
           </div>
         </div>
         <nav className="hidden md:flex space-x-6 text-sm font-medium" style={{fontFamily: 'Inter, sans-serif'}}>

@@ -3,8 +3,9 @@ import ContactSection from '@/components/ContactSection';
 export default function Home() {
   return (
     <>
-      <main>
-        <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-32 border-b-8 border-[#CC0000] snap-start h-screen">
+      <div className="pt-20">
+        <main>
+          <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-32 border-b-8 border-[#CC0000] min-h-screen flex items-center">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-5xl sm:text-7xl lg:text-8xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
               <span className="text-[#CC0000]">DISEÑO</span> INSTANTÁNEO. <br className="hidden sm:inline" /> PRECIOS INIGUALABLES.
@@ -18,7 +19,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="pvp" className="py-20 sm:py-28 bg-[#fefefe] snap-start h-screen">
+        <section id="pvp" className="py-20 sm:py-28 bg-[#fefefe] min-h-screen flex items-center">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl sm:text-5xl text-center mb-16 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
               LA <span className="text-[#CC0000]">FÓRMULA</span> DEL PRECIO BAJO Y LA GESTIÓN ÁGIL
@@ -49,7 +50,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="servicios" className="py-20 sm:py-28 bg-[#1A1A1A] text-white snap-start h-screen">
+        <section id="servicios" className="py-20 sm:py-28 bg-[#1A1A1A] text-white min-h-screen flex items-center">
           <div className="container mx-auto px-4 max-w-4xl">
             <h2 className="text-4xl sm:text-5xl text-center mb-16 text-white" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
               SOLUCIONES DE IMAGEN <span className="text-[#CC0000]">PARA SU NEGOCIO</span>
@@ -76,14 +77,15 @@ export default function Home() {
         </section>
 
         <ContactSection />
-      </main>
+        </main>
 
-      <footer className="bg-[#1A1A1A] text-white py-10">
-        <div className="container mx-auto px-4 text-center text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-          <p className="mb-2">© 2026 MSM Estampado & Diseño. Moralisimo.com. <br /> <strong>Costo Inteligente.</strong></p>
-          <p className="text-gray-400">Su socio local en soluciones de imagen rápida y producción con estructura de costo mínimo.</p>
-        </div>
-      </footer>
+        <footer className="bg-[#1A1A1A] text-white py-10">
+          <div className="container mx-auto px-4 text-center text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="mb-2">© 2026 MSM Estampado & Diseño. Moralisimo.com. <br /> <strong>Costo Inteligente.</strong></p>
+            <p className="text-gray-400">Su socio local en soluciones de imagen rápida y producción con estructura de costo mínimo.</p>
+          </div>
+        </footer>
+      </div>
     </>
   );
 }
