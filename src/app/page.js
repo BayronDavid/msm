@@ -1,4 +1,5 @@
 import ContactSection from '@/components/ContactSection';
+import ImageCarousel from '@/components/ImageCarousel';
 
 export default function Home() {
   return (
@@ -21,32 +22,57 @@ export default function Home() {
 
         <section id="pvp" className="py-20 sm:py-28 bg-[#fefefe] min-h-screen flex items-center">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl sm:text-5xl text-center mb-16 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+            <h2 className="text-4xl sm:text-5xl text-center mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
               LA <span className="text-[#CC0000]">FÓRMULA</span> DEL PRECIO BAJO Y LA GESTIÓN ÁGIL
             </h2>
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              <div className="bg-white p-6 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-t-4 border-t-[#1A1A1A]">
-                <div className="text-5xl mb-3 text-[#1A1A1A]">⚡</div>
-                <h3 className="text-2xl tracking-wider mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>DISEÑO Y APROBACIÓN EN HORAS</h3>
-                <p className="text-[#556270] text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  La velocidad está en el <strong>diseño y la cotización</strong>. Gracias al software, generamos el logo, la simulación y la orden de compra en <strong>horas, no semanas</strong>. Cero tiempo muerto en la fase inicial.
-                </p>
+              <div className="container mx-auto px-4">
+                {/* Shared carousel for the three cards */}
+                <div className="max-w-6xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    {/* Slider column (left on desktop) */}
+                    <div className="w-full md:pr-4">
+                      <div className="h-64 md:h-[420px] lg:h-[450px]">
+                        <ImageCarousel
+                          images={[
+                            'https://placehold.co/600x400?text=Galeria+1',
+                            'https://placehold.co/800x600?text=Galeria+2',
+                            'https://placehold.co/1200x800?text=Galeria+3'
+                          ]}
+                          alt="Galería de productos"
+                          interval={4000}
+                          className="w-full h-full rounded-xl shadow-lg"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Cards column (right on desktop) */}
+                    <div className="w-full">
+                      <div className="grid grid-rows-3 gap-2">
+                        <div className="bg-white p-3 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-t-4 border-t-[#1A1A1A]">
+                          <h3 className="text-2xl tracking-wider mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>DISEÑO Y APROBACIÓN EN HORAS</h3>
+                          <p className="text-[#556270] text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+                            La velocidad está en el <strong>diseño y la cotización</strong>. Gracias al software, generamos el logo, la simulación y la orden de compra en <strong>horas, no semanas</strong>. Cero tiempo muerto en la fase inicial.
+                          </p>
+                        </div>
+
+                        <div className="bg-white p-3 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-t-4 border-t-[#CC0000]">
+                          <h3 className="text-2xl tracking-wider mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>PROVEEDORES INCOMPETIBLES</h3>
+                          <p className="text-[#556270] text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+                            Nuestra principal ventaja: Establecemos alianzas directas con <strong>fábricas y realizamos adquisiciones estratégicas desde China</strong>. Esta agresiva estrategia elimina intermediarios, garantizando <strong>precios imbatibles</strong> que pocos se atreven a ofrecer.
+                          </p>
+                        </div>
+
+                        <div className="bg-white p-3 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-t-4 border-t-[#1A1A1A]">
+                          <h3 className="text-2xl tracking-wider mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>ESTRUCTURA MÍNIMA Y DIRECTA</h3>
+                          <p className="text-[#556270] text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+                            Operamos sin pagar renta de local. Al eliminar los costos fijos elevados, le garantizamos que su inversión se destina <strong>directamente</strong> a la calidad del producto y no a gastos operativos innecesarios.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-t-4 border-t-[#CC0000]">
-                <div className="text-5xl mb-3 text-[#CC0000]">⭐</div>
-                <h3 className="text-2xl tracking-wider mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>PROVEEDORES INCOMPETIBLES</h3>
-                <p className="text-[#556270] text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Nuestra principal ventaja: Establecemos alianzas directas con <strong>fábricas y realizamos adquisiciones estratégicas desde China</strong>. Esta agresiva estrategia elimina intermediarios, garantizando <strong>precios imbatibles</strong> que pocos se atreven a ofrecer.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-t-4 border-t-[#1A1A1A]">
-                <div className="text-5xl mb-3 text-[#1A1A1A]">⚙️</div>
-                <h3 className="text-2xl tracking-wider mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>ESTRUCTURA MÍNIMA Y DIRECTA</h3>
-                <p className="text-[#556270] text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Operamos sin pagar renta de local. Al eliminar los costos fijos elevados, le garantizamos que su inversión se destina <strong>directamente</strong> a la calidad del producto y no a gastos operativos innecesarios.
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
