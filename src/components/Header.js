@@ -38,7 +38,7 @@ export default function Header() {
         <nav className="hidden md:flex space-x-6 text-sm font-medium" style={{fontFamily: 'Inter, sans-serif'}}>
           <a href="/" className={`transition duration-300 ${pathname === '/' ? 'text-[#CC0000] border-b-2 border-[#CC0000] pb-1' : 'text-gray-700 hover:text-black'}`}>Inicio</a>
           <a href="/productos" className={`transition duration-300 ${pathname === '/productos' ? 'text-[#CC0000] border-b-2 border-[#CC0000] pb-1' : 'text-gray-700 hover:text-black'}`}>Productos</a>
-          <a href="/#servicios" className="text-gray-700 hover:text-black transition duration-300">Servicios</a>
+          <a href="/brochure" className={`transition duration-300 ${pathname === '/brochure' ? 'text-[#CC0000] border-b-2 border-[#CC0000] pb-1' : 'text-gray-700 hover:text-black'}`}>Brochure</a>
           <a href="/#contacto" className="px-4 py-2 bg-[#1A1A1A] text-white rounded-lg hover:bg-red-700 transition duration-300">Solicitar Presupuesto</a>
         </nav>
         <button
@@ -56,7 +56,7 @@ export default function Header() {
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-2" style={{fontFamily: 'Inter, sans-serif'}}>
             <a href="/" onClick={() => setIsMenuOpen(false)} className={`transition duration-200 ${pathname === '/' ? 'text-[#CC0000]' : 'text-gray-700 hover:text-black'}`}>Inicio</a>
             <a href="/productos" onClick={() => setIsMenuOpen(false)} className={`transition duration-200 ${pathname === '/productos' ? 'text-[#CC0000]' : 'text-gray-700 hover:text-black'}`}>Productos</a>
-            <a href="/#servicios" onClick={() => setIsMenuOpen(false)} className="text-gray-700 hover:text-black transition duration-200">Servicios</a>
+            <a href="/brochure" onClick={() => setIsMenuOpen(false)} className={`transition duration-200 ${pathname === '/brochure' ? 'text-[#CC0000]' : 'text-gray-700 hover:text-black'}`}>Brochure</a>
             <a href="/#contacto" onClick={() => setIsMenuOpen(false)} className="inline-block px-4 py-2 bg-[#1A1A1A] text-white rounded-lg hover:bg-red-700 transition duration-200">Solicitar Presupuesto</a>
           </div>
         </nav>
