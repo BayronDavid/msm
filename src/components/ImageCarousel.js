@@ -82,9 +82,19 @@ export default function ImageCarousel({ images = [], interval = 3500, alt = '', 
       aria-roledescription="carousel"
     >
       {images.map((item, i) => {
+        // Only render the active slide and its immediate neighbours to avoid
+        // creating DOM nodes (and network requests) for every single asset.
+        const len = images.length;
+        const prevIndex = (index - 1 + len) % len;
+        const nextIndex = (index + 1) % len;
+        const isActive = i === index;
+        const isNeighbour = i === prevIndex || i === nextIndex;
+        const shouldRender = isActive || isNeighbour;
+
+        if (!shouldRender) return null;
+
         const src = typeof item === 'string' ? item : item.src;
         const type = typeof item === 'string' ? (/(\.mp4|\.webm|\.ogg)(\?|$)/i.test(src) ? 'video' : 'image') : item.type || 'image';
-        const isActive = i === index;
 
         if (type === 'video') {
           return (
@@ -95,7 +105,7 @@ export default function ImageCarousel({ images = [], interval = 3500, alt = '', 
               muted
               playsInline
               loop
-              preload="metadata"
+              preload={isActive ? 'auto' : 'metadata'}
               className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ease-in-out ${
                 isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}

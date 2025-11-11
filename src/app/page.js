@@ -1,7 +1,41 @@
 import ContactSection from '@/components/ContactSection';
-import ImageCarousel from '@/components/ImageCarousel';
+import LazyImageCarousel from '@/components/LazyImageCarousel';
 
-export default function Home() {
+import fs from 'fs';
+import path from 'path';
+
+async function getMediaFilesFromPublic(dirRelative = 'images') {
+  const publicDir = path.join(process.cwd(), 'public');
+  const target = path.join(publicDir, dirRelative);
+
+  const exts = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.mp4', '.webm', '.ogg'];
+  const results = [];
+
+  function walk(currentPath, relPath = '') {
+    if (!fs.existsSync(currentPath)) return;
+    const entries = fs.readdirSync(currentPath, { withFileTypes: true });
+    for (const ent of entries) {
+      const entPath = path.join(currentPath, ent.name);
+      const entRel = path.posix.join(relPath, ent.name);
+      if (ent.isDirectory()) {
+        walk(entPath, entRel);
+      } else if (ent.isFile()) {
+        const ext = path.extname(ent.name).toLowerCase();
+        if (exts.includes(ext)) {
+          // URL path from public
+          results.push(`/images/${entRel.replace(/\\/g, '/')}`);
+        }
+      }
+    }
+  }
+
+  walk(target, '');
+  return results;
+}
+
+export default async function Home() {
+  // gather media files from public/images (recursive). If empty, we'll use the existing placeholders.
+  const gallery = await getMediaFilesFromPublic();
   return (
     <>
       <div className="pt-20">
@@ -31,15 +65,20 @@ export default function Home() {
                     {/* Slider column (left on desktop) */}
                     <div className="w-full md:pr-4">
                       <div className="h-64 md:h-[420px] lg:h-[450px]">
-                        <ImageCarousel
-                          images={[
-                            'https://placehold.co/600x400?text=Galeria+1',
-                            'https://placehold.co/800x600?text=Galeria+2',
-                            'https://placehold.co/1200x800?text=Galeria+3'
-                          ]}
+                        <LazyImageCarousel
+                          images={
+                            (gallery && gallery.length > 0)
+                              ? gallery
+                              : [
+                                  'https://placehold.co/600x400?text=Galeria+1',
+                                  'https://placehold.co/800x600?text=Galeria+2',
+                                  'https://placehold.co/1200x800?text=Galeria+3'
+                                ]
+                          }
                           alt="Galería de productos"
                           interval={4000}
                           className="w-full h-full rounded-xl shadow-lg"
+                          rootMargin="50px"
                         />
                       </div>
                     </div>

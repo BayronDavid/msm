@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.catalog-store.link",
       },
+      {
+        protocol: "https",
+        hostname: "png.pngtree.com",
+      },
     ],
   },
 };

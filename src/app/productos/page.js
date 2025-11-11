@@ -1,6 +1,7 @@
 import { randomUUID } from "crypto";
 import Image from "next/image";
 import supabase from "@/lib/supabaseClient";
+import NoSnapDisable from '@/components/NoSnapDisable';
 
 export const metadata = {
   title: "Catálogo de Productos | MORALISIMO Print Studio",
@@ -11,7 +12,7 @@ export const metadata = {
 export const revalidate = 0;
 export const dynamic = "force-dynamic";
 
-const FALLBACK_CATEGORY = "Colección General";
+const FALLBACK_CATEGORY = "Otros";
 const WHATSAPP_PHONE = (process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "573001234567").replace(/[^\d]/g, "");
 
 const currencyFormatter = new Intl.NumberFormat("es-CO", {
@@ -93,6 +94,20 @@ function groupByTopCategory(products) {
     acc[category].push(product);
     return acc;
   }, {});
+}
+
+function orderCategories(names) {
+  // Ensure preferred categories appear first in this exact order if they exist
+  const preferred = ["Otros", "Prendas"];
+  const picked = [];
+
+  preferred.forEach((p) => {
+    const found = names.find((n) => n.toLowerCase() === p.toLowerCase());
+    if (found) picked.push(found);
+  });
+
+  const rest = names.filter((n) => !picked.includes(n)).sort((a, b) => a.localeCompare(b, "es"));
+  return [...picked, ...rest];
 }
 
 function buildStats(products) {
@@ -286,41 +301,53 @@ function ProductCard({ product }) {
 export default async function ProductosPage() {
   const { items: products, error } = await fetchProducts();
   const groupedByCategory = groupByTopCategory(products);
-  const categoryNames = Object.keys(groupedByCategory).sort((a, b) => a.localeCompare(b, "es"));
+  const categoryNames = orderCategories(Object.keys(groupedByCategory));
   const stats = buildStats(products);
-  const lastUpdated = new Intl.DateTimeFormat("es-CO", {
-    dateStyle: "long",
-    timeStyle: "short",
-  }).format(new Date());
 
   return (
     <>
+      <NoSnapDisable />
       <main>
-        <section className="bg-[#1A1A1A] text-white pt-16 pb-20 sm:pt-24 sm:pb-28 border-b-8 border-[#CC0000]">
-          <div className="container mx-auto px-4 max-w-5xl text-center">
+        <section className="bg-[#1A1A1A] text-white pt-20 pb-16 sm:pt-24 sm:pb-28 border-b-8 border-[#CC0000]">
+          <div className="container mx-auto px-6 sm:px-4 max-w-5xl text-center">
             <p className="uppercase text-sm tracking-[0.3em] text-[#F6C5C5] mb-4" style={{ fontFamily: "Inter, sans-serif" }}>
               Catálogo actualizado
             </p>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl tracking-wide mb-6" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide mb-6" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
               Personalización Profesional en Cada Detalle
             </h1>
-            <p className="text-lg sm:text-xl text-[#E4E8EE] mb-10" style={{ fontFamily: "Inter, sans-serif" }}>
+            <p className="text-base sm:text-lg text-[#E4E8EE] mb-8" style={{ fontFamily: "Inter, sans-serif" }}>
               Selección curada de prendas, textiles y merchandising listos para producir con su identidad corporativa. Calidad \& velocidad garantizadas por nuestro laboratorio gráfico.
             </p>
             <a
               href="#catalogo"
-              className="inline-block px-10 py-4 bg-[#CC0000] text-white text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105 shadow-xl"
+              className="inline-block px-8 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105 shadow-xl"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               Ver Catálogo Completo
             </a>
-            <p className="mt-6 text-xs uppercase tracking-[0.3em] text-[#9AA0A6]" style={{ fontFamily: "Inter, sans-serif" }}>
-              Última actualización: {lastUpdated}
-            </p>
+
+            {/* Categorías integradas en el hero */}
+            <div className="mt-8">
+              {/* Allow wrapping: categories will flow into multiple rows on small screens */}
+              <div className="w-full">
+                <div className="flex flex-wrap justify-center gap-3 px-4 sm:px-6" style={{ fontFamily: "Inter, sans-serif" }}>
+                  {categoryNames.map((category) => (
+                    <a
+                      key={category}
+                      href={`#${slugify(category)}`}
+                      className="px-4 py-2 rounded-full bg-white text-[#1A1A1A] border border-[#E5E7EB] hover:border-[#CC0000] hover:text-[#CC0000] transition text-sm uppercase tracking-[0.14em]"
+                    >
+                      {category}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className="py-14 bg-white">
+        {/* <section className="py-14 bg-white">
           <div className="container mx-auto px-4 max-w-5xl">
             <div className="grid md:grid-cols-4 gap-6">
               <StatCard label="Referencias Activadas" value={stats.totalProducts} />
@@ -334,25 +361,7 @@ export default async function ProductosPage() {
               </p>
             ) : null}
           </div>
-        </section>
-
-        <section className="py-6 bg-[#f7f7f7] border-y border-[#E5E7EB]">
-          <div className="container mx-auto px-4">
-            <div className="overflow-x-auto">
-              <div className="flex gap-3 min-w-full" style={{ fontFamily: "Inter, sans-serif" }}>
-                {categoryNames.map((category) => (
-                  <a
-                    key={category}
-                    href={`#${slugify(category)}`}
-                    className="flex-shrink-0 px-5 py-3 rounded-full bg-white text-[#1A1A1A] border border-[#E5E7EB] hover:border-[#CC0000] hover:text-[#CC0000] transition"
-                  >
-                    {category}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
+        </section> */}
 
         <section id="catalogo" className="py-16 sm:py-20 bg-[#fefefe]">
           <div className="container mx-auto px-4 max-w-6xl space-y-16">
