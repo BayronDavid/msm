@@ -121,7 +121,7 @@ export default async function Home() {
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Catálogo MORALISIMO",
-      url: "https://moralisimo.com/productos"
+      url: "https://moralisimo.com/catalogo"
     }
   };
   const faqSchema = {
@@ -183,15 +183,15 @@ export default async function Home() {
                     Solicitar cotización
                   </a>
                   <a
-                    href="/productos"
+                    href="/inventario"
                     className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 border border-[#1A1A1A] text-[#1A1A1A] text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-[#1A1A1A] hover:text-white"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
-                    Ver catálogo
+                    Ver inventario
                   </a>
                 </div>
                 <p className="mt-4 text-sm text-[#556270] text-center" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Vea nuestro <a href="/brochure" className="text-[#CC0000] font-semibold underline">catálogo rápido (productos más vendidos)</a> o explore el <a href="/productos" className="text-[#CC0000] font-semibold underline">catálogo completo</a>.
+                  Vea nuestro <a href="/catalogo" className="text-[#CC0000] font-semibold underline">catálogo rápido (productos más vendidos)</a> o explore el <a href="/inventario" className="text-[#CC0000] font-semibold underline">inventario completo</a>.
                 </p>
               </div>
             </div>
