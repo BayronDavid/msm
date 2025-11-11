@@ -250,14 +250,10 @@ function ProductCard({ product }) {
           {product.shortDescription || product.description || "Producto disponible para personalización inmediata."}
         </p>
         <div className="flex items-baseline gap-3">
-          <span className="text-2xl font-semibold text-[#1A1A1A]" style={{ fontFamily: "Inter, sans-serif" }}>
-            {price.primary}
+          {/* Precios ocultos: mostrar texto de contacto en su lugar */}
+          <span className="text-base font-semibold text-[#1A1A1A]" style={{ fontFamily: "Inter, sans-serif" }}>
+            Consultar precio
           </span>
-          {price.secondary ? (
-            <span className="text-sm line-through text-[#9AA0A6]" style={{ fontFamily: "Inter, sans-serif" }}>
-              {price.secondary}
-            </span>
-          ) : null}
         </div>
         <div className="text-xs text-[#556270] uppercase tracking-[0.18em]" style={{ fontFamily: "Inter, sans-serif" }}>
           SKU: {product.sku}

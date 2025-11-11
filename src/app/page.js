@@ -91,7 +91,11 @@ export default async function Home() {
             <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-10" style={{ fontFamily: 'Inter, sans-serif' }}>
               Somos MORALISIMO <span className="font-bold text-[#1A1A1A]">(MSM) Estampado & Diseño</span>. La <strong>revolución</strong> de la imagen local. Seriedad técnica, <strong>gestión rápida del pedido</strong> y precios que la competencia no puede igualar gracias a <strong>proveedores estratégicos</strong>.
             </p>
-            <a href="#contacto" className="inline-block px-10 py-4 bg-[#CC0000] text-white text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105 shadow-xl" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <a
+              href="#contacto"
+              className="inline-block w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105 shadow-xl max-w-md mx-auto"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
               ¡Pida su Cotización ahora!
             </a>
 
