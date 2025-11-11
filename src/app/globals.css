@@ -6,6 +6,14 @@ html {
   overflow-y: scroll;
 }
 
+html[data-no-snap="true"] {
+  scroll-snap-type: none;
+}
+
+html[data-no-snap="true"] section {
+  scroll-snap-align: unset;
+}
+
 body {
   background-color: #f7f7f7;
   color: #1A1A1A;

@@ -37,8 +37,8 @@ export default function Header() {
         </div>
         <nav className="hidden md:flex space-x-6 text-sm font-medium" style={{fontFamily: 'Inter, sans-serif'}}>
           <a href="/" className={`transition duration-300 ${pathname === '/' ? 'text-[#CC0000] border-b-2 border-[#CC0000] pb-1' : 'text-gray-700 hover:text-black'}`}>Inicio</a>
-          <a href="/inventario" className={`transition duration-300 ${pathname === '/inventario' ? 'text-[#CC0000] border-b-2 border-[#CC0000] pb-1' : 'text-gray-700 hover:text-black'}`}>Inventario</a>
           <a href="/catalogo" className={`transition duration-300 ${pathname === '/catalogo' ? 'text-[#CC0000] border-b-2 border-[#CC0000] pb-1' : 'text-gray-700 hover:text-black'}`}>Catálogo</a>
+          <a href="/inventario" className={`transition duration-300 ${pathname === '/inventario' ? 'text-[#CC0000] border-b-2 border-[#CC0000] pb-1' : 'text-gray-700 hover:text-black'}`}>Inventario</a>
           <a href="/#contacto" className="px-4 py-2 bg-[#1A1A1A] text-white rounded-lg hover:bg-red-700 transition duration-300">Solicitar Presupuesto</a>
         </nav>
         <button
@@ -55,8 +55,8 @@ export default function Header() {
         <nav className="md:hidden bg-white border-t border-gray-100">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-2" style={{fontFamily: 'Inter, sans-serif'}}>
             <a href="/" onClick={() => setIsMenuOpen(false)} className={`transition duration-200 ${pathname === '/' ? 'text-[#CC0000]' : 'text-gray-700 hover:text-black'}`}>Inicio</a>
-            <a href="/inventario" onClick={() => setIsMenuOpen(false)} className={`transition duration-200 ${pathname === '/inventario' ? 'text-[#CC0000]' : 'text-gray-700 hover:text-black'}`}>Inventario</a>
             <a href="/catalogo" onClick={() => setIsMenuOpen(false)} className={`transition duration-200 ${pathname === '/catalogo' ? 'text-[#CC0000]' : 'text-gray-700 hover:text-black'}`}>Catálogo</a>
+            <a href="/inventario" onClick={() => setIsMenuOpen(false)} className={`transition duration-200 ${pathname === '/inventario' ? 'text-[#CC0000]' : 'text-gray-700 hover:text-black'}`}>Inventario</a>
             <a href="/#contacto" onClick={() => setIsMenuOpen(false)} className="inline-block px-4 py-2 bg-[#1A1A1A] text-white rounded-lg hover:bg-red-700 transition duration-200">Solicitar Presupuesto</a>
           </div>
         </nav>

@@ -1,5 +1,6 @@
 import ContactSection from '@/components/ContactSection';
 import LazyImageCarousel from '@/components/LazyImageCarousel';
+import NoSnapDisable from '@/components/NoSnapDisable';
 import CATALOGO_DATA from '@/data/catalogo.json';
 
 export const metadata = {
@@ -143,7 +144,9 @@ export default function CatalogoPage() {
   const structuredDataJson = JSON.stringify(offerCatalogSchema);
 
   return (
-    <main className="pt-20">
+    <>
+      <NoSnapDisable />
+      <main className="pt-20">
       <section className="bg-white min-h-screen flex items-center pt-16 pb-16 sm:pt-24 sm:pb-24 border-b-8 border-[#CC0000]">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl sm:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>MORALISIMO (MSM)</h1>
@@ -278,5 +281,6 @@ export default function CatalogoPage() {
 
       <ContactSection />
     </main>
+    </>
   );
 }
