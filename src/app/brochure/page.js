@@ -81,7 +81,7 @@ function ProductRow({ p, reverse = false }) {
 export default function BrochurePage() {
   const phone = (process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '573001234567').replace(/[^\d]/g, '');
     // Emprendimiento y lema quemados en la página (no consumir desde JSON)
-    const EMBR_TITLE = 'MORALISIMO (MSM) Estampado & Diseño';
+    const EMBR_TITLE = 'Estampado & Diseño';
     const EMBR_LEMA = 'Precios imbatibles gracias a la adquisición estratégica en volumen.';
     const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(`Hola! Vi el folleto de ${EMBR_TITLE} y quiero cotizar productos.`)}`;
 
@@ -89,8 +89,8 @@ export default function BrochurePage() {
     <main className="pt-20">
       <section className="bg-white min-h-screen flex items-center pt-16 pb-16 sm:pt-24 sm:pb-24 border-b-8 border-[#CC0000]">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl sm:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>{BROCHURE_DATA.emprendimiento}</h1>
-            <h1 className="text-5xl sm:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>{EMBR_TITLE}</h1>
+          <h1 className="text-5xl sm:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>MORALISIMO (MSM)</h1>
+            <h4 className="text-4xl sm:text-5xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>{EMBR_TITLE}</h4>
             <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>{EMBR_LEMA}</p>
             <p className="max-w-3xl mx-auto text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
               Más abajo encontrarás nuestros productos más vendidos y sus precios ya definidos. Si necesitas el precio final exacto para tu pedido (por cantidades, tallas o personalizaciones), solicita una cotización por WhatsApp.
