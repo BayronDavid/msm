@@ -165,9 +165,32 @@ export default function BrochurePage() {
           </div>
             <div className="w-full max-w-lg mx-auto">
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                <a href="/productos" className="w-full sm:w-auto inline-block px-6 py-3 bg-[#CC0000] text-white font-bold uppercase rounded-lg shadow-md hover:scale-[1.02] transition text-center" style={{ fontFamily: 'Inter, sans-serif' }}>Ver catálogo completo</a>
-                <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-block px-6 py-3 bg-[#25D366] text-white font-bold uppercase rounded-lg shadow-md hover:scale-[1.02] transition text-center" style={{ fontFamily: 'Inter, sans-serif' }}>Solicitar cotización</a>
-                <a href="/" className="w-full sm:w-auto inline-block px-6 py-3 border border-[#1A1A1A] text-[#1A1A1A] bg-white font-bold uppercase rounded-lg shadow-sm hover:bg-[#f3f3f3] transition text-center" style={{ fontFamily: 'Inter, sans-serif' }} aria-label="Ver propuesta de valor">Ver propuesta de valor</a>
+                <a
+                  href="/productos"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#CC0000] text-white font-semibold rounded-md border border-transparent hover:bg-[#b30000] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CC0000] transition-transform"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Ver catálogo completo
+                </a>
+
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#1A1A1A] text-white font-semibold rounded-md border border-transparent hover:bg-[#333333] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CC0000] transition-transform"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Solicitar cotización
+                </a>
+
+                <a
+                  href="/"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 bg-white text-[#1A1A1A] font-semibold rounded-md border border-[#E5E7EB] hover:bg-[#fafafa] transition"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  aria-label="Ver propuesta de valor"
+                >
+                  Ver propuesta de valor
+                </a>
               </div>
             </div>
         </div>
