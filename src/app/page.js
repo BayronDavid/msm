@@ -89,11 +89,15 @@ export default async function Home() {
               <span className="text-[#CC0000]">DISEÑO</span> INSTANTÁNEO. <br className="hidden sm:inline" /> PRECIOS INIGUALABLES.
             </h1>
             <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-10" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Somos <span className="font-bold text-[#1A1A1A]">MSM Estampado & Diseño</span>. La <strong>revolución</strong> de la imagen local. Seriedad técnica, <strong>gestión rápida del pedido</strong> y precios que la competencia no puede igualar gracias a <strong>proveedores estratégicos</strong>.
+              Somos MORALISIMO <span className="font-bold text-[#1A1A1A]">(MSM) Estampado & Diseño</span>. La <strong>revolución</strong> de la imagen local. Seriedad técnica, <strong>gestión rápida del pedido</strong> y precios que la competencia no puede igualar gracias a <strong>proveedores estratégicos</strong>.
             </p>
-            <a href="#contacto" className="inline-block px-10 py-4 bg-[#CC0000] text-white text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:hover:bg-red-800 transform hover:scale-105 shadow-xl" style={{ fontFamily: 'Inter, sans-serif' }}>
-              ¡Pida su Cotización Express Ahora!
+            <a href="#contacto" className="inline-block px-10 py-4 bg-[#CC0000] text-white text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105 shadow-xl" style={{ fontFamily: 'Inter, sans-serif' }}>
+              ¡Pida su Cotización ahora!
             </a>
+
+            <p className="mt-4 text-sm text-[#556270] max-w-2xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+              ¿No está seguro por dónde empezar? En nuestro <a href="/brochure" className="text-[#CC0000] font-semibold underline">Brochure</a> encontrará los productos más comunes y cotizados, con precios ya definidos para cotizar de forma inmediata.
+            </p>
           </div>
         </section>
 
