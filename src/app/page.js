@@ -164,45 +164,36 @@ export default async function Home() {
               <p className="uppercase text-sm tracking-[0.35em] text-[#9AA0A6] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Estudio textil en Sibundoy, Putumayo
               </p>
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
                 Estampados profesionales y merchandising corporativo
               </h1>
-              <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <p className="max-w-2xl mx-auto text-xl sm:text-1xl text-[#556270] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
                 En <strong>MORALISIMO Estampado & Diseño</strong> convertimos sus ideas en uniformes, regalos empresariales y piezas gráficas inolvidables. Operamos desde Sibundoy para todo Putumayo, Nariño y sur de Colombia con <strong>tiempos express, diseños listos en horas</strong> y economías de escala gracias a nuestra red de proveedores directos.
               </p>
-              <div className="flex flex-col sm:flex-row sm:justify-center gap-4 max-w-3xl mx-auto">
-                <a
-                  href="#contacto"
-                  className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105 shadow-xl"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Solicitar cotización express
-                </a>
-                <a
-                  href="/productos"
-                  className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 border border-[#1A1A1A] text-[#1A1A1A] text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-[#1A1A1A] hover:text-white"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
-                  Ver catálogo en línea
-                </a>
+              <div className="mt-8 max-w-2xl mx-auto">
+                <p className="text-lg text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Producción de uniformes, merchandising y diseño listos para impresión. Calidad profesional desde Sibundoy con entregas al sur de Colombia.
+                </p>
+                <div className="flex flex-col sm:flex-row justify-center gap-4">
+                  <a
+                    href="#contacto"
+                    className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    Solicitar cotización
+                  </a>
+                  <a
+                    href="/productos"
+                    className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 border border-[#1A1A1A] text-[#1A1A1A] text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-[#1A1A1A] hover:text-white"
+                    style={{ fontFamily: 'Inter, sans-serif' }}
+                  >
+                    Ver catálogo
+                  </a>
+                </div>
+                <p className="mt-4 text-sm text-[#556270] text-center" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Vea nuestro <a href="/brochure" className="text-[#CC0000] font-semibold underline">catálogo rápido (productos más vendidos)</a> o explore el <a href="/productos" className="text-[#CC0000] font-semibold underline">catálogo completo</a>.
+                </p>
               </div>
-              <div className="mt-8 grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto text-left text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                <div className="bg-[#F7F7F7] rounded-xl p-5">
-                  <h2 className="text-[#1A1A1A] text-lg font-semibold mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>DTF, sublimación y vinilo profesional</h2>
-                  <p>Producción para camisetas, hoodies, gorras, mugs y material POP sin mínimos extremos y con acabados resistentes a uso corporativo.</p>
-                </div>
-                <div className="bg-[#F7F7F7] rounded-xl p-5">
-                  <h2 className="text-[#1A1A1A] text-lg font-semibold mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Diseño estratégico listo para imprimir</h2>
-                  <p>Desarrollamos logos, manuales cromáticos y piezas de comunicación para emprendimientos y organizaciones que necesitan salir al mercado rápido.</p>
-                </div>
-                <div className="bg-[#F7F7F7] rounded-xl p-5">
-                  <h2 className="text-[#1A1A1A] text-lg font-semibold mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Cobertura Putumayo y sur del país</h2>
-                  <p>Despachamos desde Sibundoy hacia Pasto, Mocoa, Ipiales y todo el sur de Colombia con seguimiento en tiempo real vía WhatsApp.</p>
-                </div>
-              </div>
-              <p className="mt-6 text-sm text-[#556270] max-w-2xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
-                ¿Quiere precios de referencia inmediatos? Descargue el <a href="/brochure" className="text-[#CC0000] font-semibold underline">brochure de productos</a> o revise nuestro <a href="/productos" className="text-[#CC0000] font-semibold underline">catálogo vivo conectado a Supabase</a>.
-              </p>
             </div>
           </section>
 

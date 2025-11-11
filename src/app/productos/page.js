@@ -375,7 +375,7 @@ export default async function ProductosPage() {
         <section className="bg-[#1A1A1A] text-white pt-20 pb-16 sm:pt-24 sm:pb-28 border-b-8 border-[#CC0000]">
           <div className="container mx-auto px-6 sm:px-4 max-w-5xl text-center">
             <p className="uppercase text-sm tracking-[0.3em] text-[#F6C5C5] mb-4" style={{ fontFamily: "Inter, sans-serif" }}>
-              Catálogo conectado a Supabase
+              Catálogo MORALISIMO
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide mb-6" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
               Catálogo de estampados corporativos en Sibundoy, Putumayo
@@ -392,7 +392,7 @@ export default async function ProductosPage() {
             </a>
 
             <p className="mt-6 text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
-              ¿Necesita precios unitarios? Combine este catálogo con nuestro <a href="/brochure" className="text-white underline">brochure descargable</a> o solicite una propuesta personalizada por <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="text-white underline">WhatsApp</a>.
+              ¿Necesita precios unitarios? Consulte nuestro <a href="/brochure" className="text-white underline">catálogo rápido (productos más vendidos)</a> o solicite una propuesta personalizada por <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="text-white underline">WhatsApp</a>.
             </p>
 
             <div className="mt-8">
@@ -414,25 +414,10 @@ export default async function ProductosPage() {
         </section>
 
         <section className="py-12 bg-white">
-          <div className="container mx-auto px-4 max-w-5xl">
-            <div className="grid gap-8 md:grid-cols-2">
-              <div className="space-y-4">
-                <h2 className="text-3xl text-[#1A1A1A]" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
-                  Inventario vivo y trazable
-                </h2>
-                <p className="text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Nuestros datos provienen de Supabase. Cada movimiento de stock se refleja aquí, por lo que sabrá qué referencias están listas para producción inmediata y cuáles requieren agendamiento previo.
-                </p>
-                <p className="text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Operamos desde Sibundoy con aliados logísticos para despachar hacia Putumayo, Nariño y el sur de Colombia. Incluimos guías rastreables y asesoría por correo (<a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] underline">bayrondavid@moralisimo.com</a>) y redes sociales.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <StatCard label="Referencias activas" value={stats.totalProducts} />
-                <StatCard label="Familias" value={stats.totalCategories} />
-                <StatCard label="Modelos disponibles" value={stats.inStockCount} />
-                <StatCard label="Unidades registradas" value={stats.totalUnits} helper="Inventario inmediato" />
-              </div>
+          <div className="container mx-auto px-4 max-w-4xl">
+            <div className="mx-auto text-center text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
+              <p className="mb-4">Nuestro catálogo muestra las familias de producto y las referencias más solicitadas. Si necesita un precio exacto por cantidad, tallas o personalizaciones, solicite una cotización por WhatsApp o usando el formulario de contacto.</p>
+              <p>Operamos desde Sibundoy y despachamos hacia Putumayo, Nariño y ciudades del sur de Colombia. Para consultas directas use <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] underline">bayrondavid@moralisimo.com</a> o nuestro WhatsApp.</p>
             </div>
           </div>
         </section>
@@ -448,7 +433,7 @@ export default async function ProductosPage() {
               <li>Definimos técnica (DTF, sublimación o vinilo) y agendamos producción. Entregamos en 3 a 5 días hábiles, con opción express según disponibilidad.</li>
             </ol>
             <p className="mt-6 text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
-              También puede descargar el <a href="/brochure" className="text-[#CC0000] font-semibold underline">brochure con precios base</a> o escribirnos al correo <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] font-semibold underline">bayrondavid@moralisimo.com</a>.
+              También puede consultar nuestro <a href="/brochure" className="text-[#CC0000] font-semibold underline">catálogo rápido con precios base (página)</a> o escribirnos al correo <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] font-semibold underline">bayrondavid@moralisimo.com</a>.
             </p>
           </div>
         </section>
@@ -461,7 +446,7 @@ export default async function ProductosPage() {
                   Catálogo no disponible temporalmente
                 </h2>
                 <p className="text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Tuvimos un inconveniente al consultar Supabase. Reintenta en unos minutos o contáctanos por WhatsApp para recibir la lista actualizada.
+                  Tuvimos un inconveniente al consultar el catálogo. Intenta nuevamente en unos minutos o contáctanos por WhatsApp para recibir la lista actualizada.
                 </p>
               </div>
             ) : null}
@@ -472,7 +457,7 @@ export default async function ProductosPage() {
                   Estamos preparando el catálogo
                 </h2>
                 <p className="text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Aún no hay referencias cargadas. Actualiza la base de datos en Supabase o escríbenos para recibir opciones disponibles en bodega.
+                  Aún no hay referencias disponibles. Actualiza la base de productos o contáctanos para recibir opciones disponibles en bodega.
                 </p>
               </div>
             ) : null}
