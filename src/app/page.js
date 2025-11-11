@@ -1,36 +1,79 @@
 import ContactSection from '@/components/ContactSection';
 import LazyImageCarousel from '@/components/LazyImageCarousel';
 
-import fs from 'fs';
-import path from 'path';
+// import fs from 'fs';
+// import path from 'path';
 
-async function getMediaFilesFromPublic(dirRelative = 'images') {
-  const publicDir = path.join(process.cwd(), 'public');
-  const target = path.join(publicDir, dirRelative);
+async function getMediaFilesFromPublic() {
+  // Only consume remote manifest or env-provided list. Local filesystem scanning removed.
+  const envVar = process.env.CAROUSEL_MEDIA || process.env.NEXT_PUBLIC_CAROUSEL_MEDIA;
+  if (!envVar || envVar.trim().length === 0) return [];
 
-  const exts = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.mp4', '.webm', '.ogg'];
-  const results = [];
+  const trimmed = envVar.trim();
 
-  function walk(currentPath, relPath = '') {
-    if (!fs.existsSync(currentPath)) return;
-    const entries = fs.readdirSync(currentPath, { withFileTypes: true });
-    for (const ent of entries) {
-      const entPath = path.join(currentPath, ent.name);
-      const entRel = path.posix.join(relPath, ent.name);
-      if (ent.isDirectory()) {
-        walk(entPath, entRel);
-      } else if (ent.isFile()) {
-        const ext = path.extname(ent.name).toLowerCase();
-        if (exts.includes(ext)) {
-          // URL path from public
-          results.push(`/images/${entRel.replace(/\\/g, '/')}`);
+  // If env var is a URL, fetch manifest or list from that URL
+  if (/^https?:\/\//i.test(trimmed)) {
+    const candidates = trimmed.endsWith('/')
+      ? [trimmed + 'carousel.json', trimmed + 'media.json', trimmed + 'list.json', trimmed + 'images.json', trimmed + 'gallery.json']
+      : [trimmed];
+
+    for (const url of candidates) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) continue;
+        const text = await res.text();
+        const contentType = (res.headers.get('content-type') || '').toLowerCase();
+
+        // If JSON manifest like the example
+        if (contentType.includes('application/json') || text.trim().startsWith('{')) {
+          try {
+            const obj = JSON.parse(text);
+            const filesObj = obj.files || {};
+            const entries = Object.values(filesObj).map((f) => f.url || f.filename).filter(Boolean);
+
+            const normalized = entries.map((u) => {
+              if (/^https?:\/\//i.test(u)) return u;
+              // resolve relative paths against the manifest URL
+              try { return new URL(u.replace(/^\.\//, ''), url).href; } catch (e) { return u; }
+            }).filter(Boolean);
+
+            if (normalized.length > 0) return normalized;
+          } catch (e) {
+            // not the expected JSON manifest; fall through to other parsing
+          }
         }
+
+        // Otherwise try parse as JSON array or newline/CSV list
+        let parsed = [];
+        try {
+          if (text.trim().startsWith('[')) parsed = JSON.parse(text);
+          else parsed = text.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+          if (parsed.length === 1 && parsed[0].includes(',')) parsed = parsed[0].split(',').map(s => s.trim()).filter(Boolean);
+        } catch (e) {
+          parsed = text.split(/\r?\n/).map(s => s.trim()).filter(Boolean);
+        }
+
+        const normalized = parsed.map((item) => {
+          if (!item) return null;
+          if (/^https?:\/\//i.test(item)) return item;
+          try { return new URL(item.replace(/^\.\//, ''), url).href; } catch (e) { return item; }
+        }).filter(Boolean);
+
+        if (normalized.length > 0) return normalized;
+      } catch (err) {
+        // ignore and try next candidate
+        continue;
       }
     }
   }
 
-  walk(target, '');
-  return results;
+  // Not a URL: parse env var as JSON array or CSV/newline list
+  try {
+    if (trimmed.startsWith('[')) return JSON.parse(trimmed).filter(Boolean);
+    return trimmed.split(/\r?\n|,/).map(s => s.trim()).filter(Boolean);
+  } catch (e) {
+    return trimmed.split(/\r?\n|,/).map(s => s.trim()).filter(Boolean);
+  }
 }
 
 export default async function Home() {
