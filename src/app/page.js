@@ -180,19 +180,19 @@ export default async function Home() {
                   {/* Botón 1: Vitrina (Catálogo) */}
                   <a
                     href="/catalogo"
-                    className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800"
+                    className="inline-flex justify-center items-center px-4 sm:px-6 py-2 sm:py-3 bg-[#CC0000] text-white text-sm sm:text-base font-bold uppercase tracking-wider rounded-lg transition duration-300 hover:bg-red-800"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
-                    Ver Catálogo (Precios y Ejemplos)
+                    Catálogo (Precios y Ejemplos)
                   </a>
 
                   {/* Botón 2: Bodega (Inventario) */}
                   <a
                     href="/inventario"
-                    className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 border border-[#1A1A1A] text-[#1A1A1A] text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-[#1A1A1A] hover:text-white"
+                    className="inline-flex justify-center items-center px-4 sm:px-6 py-2 sm:py-3 border border-[#1A1A1A] text-[#1A1A1A] text-sm sm:text-base font-bold uppercase tracking-wider rounded-lg transition duration-300 hover:bg-[#1A1A1A] hover:text-white"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
-                    Ver Inventario Completo
+                    Inventario Completo
                   </a>
                 </div>
               </div>

@@ -25,10 +25,14 @@ export default function Header() {
     <header id="top" className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-[0_10px_30px_rgba(26,26,26,0.08)] transition-all duration-300 ${isScrolled ? 'py-2' : 'py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <div className={`font-extrabold tracking-widest leading-none flex items-end border-b-4 border-[#CC0000] transition-all duration-300 ${isScrolled ? 'text-3xl sm:text-4xl' : 'text-4xl sm:text-5xl'}`} style={{fontFamily: 'Bebas Neue, sans-serif'}}>
-            <span className="text-[#1A1A1A]">M</span>
-            <span className="text-[#CC0000]">S</span>
-            <span className="text-[#1A1A1A]">M</span>
+          {/* Reemplazamos las letras MSM por el SVG en public/MSM cuadros.svg */}
+          <div className={`flex items-center transition-all duration-300 ${isScrolled ? 'h-9 sm:h-10' : 'h-12 sm:h-14'}`}>
+            <img
+              src="/MSM%20cuadros.svg"
+              alt="MSM logo"
+              className="h-full w-auto"
+              style={{ display: 'block'}}
+            />
           </div>
           <div className={`flex flex-col transition-all duration-300 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
             <span className={`text-black leading-none transition-all duration-300 ${isScrolled ? 'text-lg sm:text-xl' : 'text-xl sm:text-2xl'}`} style={{fontFamily: 'Bebas Neue, sans-serif'}}>MORALISIMO</span>
