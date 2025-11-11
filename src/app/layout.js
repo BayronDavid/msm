@@ -5,7 +5,12 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "MORALISIMO Estampado & Diseño",
-  alternateName: "MSM Estampado & Diseño",
+  // include both visual (&) and textual (y) variants so search engines can associate both
+  alternateName: [
+    "MSM Estampado & Diseño",
+    "MORALISIMO Estampado y Diseño",
+    "MORALISIMO Estampado & Diseño"
+  ],
   url: "https://moralisimo.com",
   email: "bayrondavid@moralisimo.com",
   telephone: "+57 300 123 4567",
@@ -95,6 +100,8 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: organizationSchemaJson }}
         />
+        {/* explicit canonical link to reinforce the canonical URL while keeping the visual '&' */}
+        <link rel="canonical" href="https://moralisimo.com" />
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
       </head>
       <body>
