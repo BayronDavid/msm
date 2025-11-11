@@ -11,19 +11,50 @@ function ProductRow({ p, reverse = false }) {
     'https://placehold.co/900x600?text=Producto+2',
     'https://placehold.co/900x600?text=Producto+3',
   ];
-
   // 'reverse' coloca el carrusel a la derecha en pantallas md+ cuando es true
   return (
     <div className="bg-white rounded-2xl shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0] p-8">
       <div className={`flex flex-col md:flex-row ${reverse ? 'md:flex-row-reverse' : ''} items-center gap-6`}>
   <div className="w-full md:w-1/2 h-72 md:h-80">
-          <LazyImageCarousel
-            images={placeholders}
-            alt={p.nombre}
-            interval={3500}
-            className="w-full h-full rounded-xl object-cover"
-            rootMargin="50px"
-          />
+          {/* usar p.images si está disponible, si no usar placeholders
+              si NEXT_PUBLIC_CAROUSEL_MEDIA está definida, concatenar la base
+              con rutas relativas (no afecta URLs absolutas) */}
+          {(() => {
+            // Prefer a dedicated "base" URL (no manifest) for concatenating relative image paths.
+            // Backwards-compatible: fall back to NEXT_PUBLIC_CAROUSEL_MEDIA if needed.
+            const envBase = (
+              process.env.NEXT_PUBLIC_CAROUSEL_BASE || process.env.CAROUSEL_BASE || process.env.NEXT_PUBLIC_CAROUSEL_MEDIA || process.env.CAROUSEL_MEDIA || ''
+            ).trim();
+            const useImages = (p.images && p.images.length > 0) ? p.images : placeholders;
+
+            const normalize = (item) => {
+              if (!item) return item;
+              // si ya es URL absoluta, retornarla tal cual
+              if (/^https?:\/\//i.test(item)) return item;
+              // si no hay base, devolver la ruta tal cual (puede ser '/images/...')
+              if (!envBase) return item;
+              // unir base y path cuidando las barras
+              try {
+                const baseTrim = envBase.replace(/\/+$/, '');
+                const pathTrim = item.replace(/^\/+/, '');
+                return `${baseTrim}/${pathTrim}`;
+              } catch (e) {
+                return item;
+              }
+            };
+
+            const finalImages = useImages.map(normalize).filter(Boolean);
+
+            return (
+              <LazyImageCarousel
+                images={finalImages}
+                alt={p.nombre}
+                interval={3500}
+                className="w-full h-full rounded-xl object-cover"
+                rootMargin="50px"
+              />
+            );
+          })()}
         </div>
         <div className="w-full md:w-1/2">
           <h3 className="text-2xl text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>{p.nombre}</h3>
