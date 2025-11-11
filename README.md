@@ -1,4 +1,4 @@
-## MORALISIMO Print Studio
+## MORALISIMO Estampado & Diseño
 
 Landing page y catálogo digital construidos con [Next.js](https://nextjs.org) utilizando el App Router. El proyecto se enfoca en mostrar la propuesta comercial de MORALISIMO y un catálogo vivo de productos conectados a Strapi.
 

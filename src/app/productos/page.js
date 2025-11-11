@@ -4,9 +4,28 @@ import supabase from "@/lib/supabaseClient";
 import NoSnapDisable from '@/components/NoSnapDisable';
 
 export const metadata = {
-  title: "Catálogo de Productos | MORALISIMO Print Studio",
+  title: "Catálogo de estampados en Sibundoy | MORALISIMO Estampado & Diseño",
   description:
-    "Explora las prendas y artículos personalizados disponibles en MORALISIMO Print Studio, listos para producción express.",
+    "Inventario de uniformes y merchandising personalizado producido por MORALISIMO Estampado & Diseño en Sibundoy, Putumayo. Actualización en tiempo real con Supabase.",
+  keywords: [
+    "catálogo de estampados",
+    "uniformes personalizados Putumayo",
+    "merchandising corporativo Sibundoy",
+    "dtf y sublimación",
+    "ropa empresarial sur de Colombia"
+  ],
+  openGraph: {
+    title: "Catálogo de estampados en Sibundoy | MORALISIMO Estampado & Diseño",
+    description:
+      "Consulta referencias de camisetas, hoodies, gorras y regalos empresariales listos para producción express desde Sibundoy, Putumayo.",
+    url: "https://moralisimo.com/productos"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Catálogo MORALISIMO",
+    description:
+      "Referencias conectadas a Supabase con stock actualizado para uniformes y merchandising corporativo."
+  }
 };
 
 export const revalidate = 0;
@@ -207,6 +226,53 @@ function renderStockBadge(product) {
   );
 }
 
+function buildProductStructuredData(products) {
+  const limited = products.slice(0, 20);
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Catálogo MORALISIMO Estampado & Diseño",
+    description:
+      "Listado de uniformes, merchandising y productos personalizables disponibles para producción en Sibundoy, Putumayo.",
+    itemListElement: limited.map((product, index) => {
+      const price = Number(product.salePrice ?? product.regularPrice ?? 0);
+      const offer = {
+        "@type": "Offer",
+        priceCurrency: "COP",
+        availability:
+          product.stockStatus === "instock"
+            ? "https://schema.org/InStock"
+            : "https://schema.org/OutOfStock",
+        url: "https://moralisimo.com/productos"
+      };
+      if (price > 0) {
+        offer.price = price;
+      }
+      const productData = {
+        "@type": "Product",
+        name: product.name,
+        sku: product.sku,
+        description:
+          product.shortDescription ||
+          product.description ||
+          "Referencia personalizable en MORALISIMO Estampado & Diseño.",
+        brand: "MORALISIMO Estampado & Diseño",
+        category: product.categories.join(" > ") || FALLBACK_CATEGORY,
+        offers: offer
+      };
+      const coverImage = product.images[0];
+      if (coverImage) {
+        productData.image = coverImage;
+      }
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        item: productData
+      };
+    })
+  };
+}
+
 function ProductCard({ product }) {
   const price = formatPrice(product);
   const coverImage = product.images[0] || null;
@@ -299,6 +365,8 @@ export default async function ProductosPage() {
   const groupedByCategory = groupByTopCategory(products);
   const categoryNames = orderCategories(Object.keys(groupedByCategory));
   const stats = buildStats(products);
+  const productStructuredData = buildProductStructuredData(products);
+  const structuredDataJson = JSON.stringify(productStructuredData);
 
   return (
     <>
@@ -307,13 +375,13 @@ export default async function ProductosPage() {
         <section className="bg-[#1A1A1A] text-white pt-20 pb-16 sm:pt-24 sm:pb-28 border-b-8 border-[#CC0000]">
           <div className="container mx-auto px-6 sm:px-4 max-w-5xl text-center">
             <p className="uppercase text-sm tracking-[0.3em] text-[#F6C5C5] mb-4" style={{ fontFamily: "Inter, sans-serif" }}>
-              Catálogo actualizado
+              Catálogo conectado a Supabase
             </p>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide mb-6" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
-              Personalización Profesional en Cada Detalle
+              Catálogo de estampados corporativos en Sibundoy, Putumayo
             </h1>
             <p className="text-base sm:text-lg text-[#E4E8EE] mb-8" style={{ fontFamily: "Inter, sans-serif" }}>
-              Selección curada de prendas, textiles y merchandising listos para producir con su identidad corporativa. Calidad \& velocidad garantizadas por nuestro laboratorio gráfico.
+              Referencias listas para personalizar con DTF, sublimación y vinilo textil. Elaboramos uniformes, kits de bienvenida y merchandising con entregas ágiles hacia Putumayo, Nariño y el sur de Colombia.
             </p>
             <a
               href="#catalogo"
@@ -323,9 +391,11 @@ export default async function ProductosPage() {
               Ver Catálogo Completo
             </a>
 
-            {/* Categorías integradas en el hero */}
+            <p className="mt-6 text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
+              ¿Necesita precios unitarios? Combine este catálogo con nuestro <a href="/brochure" className="text-white underline">brochure descargable</a> o solicite una propuesta personalizada por <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="text-white underline">WhatsApp</a>.
+            </p>
+
             <div className="mt-8">
-              {/* Allow wrapping: categories will flow into multiple rows on small screens */}
               <div className="w-full">
                 <div className="flex flex-wrap justify-center gap-3 px-4 sm:px-6" style={{ fontFamily: "Inter, sans-serif" }}>
                   {categoryNames.map((category) => (
@@ -343,21 +413,45 @@ export default async function ProductosPage() {
           </div>
         </section>
 
-        {/* <section className="py-14 bg-white">
+        <section className="py-12 bg-white">
           <div className="container mx-auto px-4 max-w-5xl">
-            <div className="grid md:grid-cols-4 gap-6">
-              <StatCard label="Referencias Activadas" value={stats.totalProducts} />
-              <StatCard label="Familias de Producto" value={stats.totalCategories} />
-              <StatCard label="Modelos con stock" value={stats.inStockCount} />
-              <StatCard label="Unidades disponibles" value={stats.totalUnits} helper="Inventario inmediato" />
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="space-y-4">
+                <h2 className="text-3xl text-[#1A1A1A]" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
+                  Inventario vivo y trazable
+                </h2>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  Nuestros datos provienen de Supabase. Cada movimiento de stock se refleja aquí, por lo que sabrá qué referencias están listas para producción inmediata y cuáles requieren agendamiento previo.
+                </p>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  Operamos desde Sibundoy con aliados logísticos para despachar hacia Putumayo, Nariño y el sur de Colombia. Incluimos guías rastreables y asesoría por correo (<a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] underline">bayrondavid@moralisimo.com</a>) y redes sociales.
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <StatCard label="Referencias activas" value={stats.totalProducts} />
+                <StatCard label="Familias" value={stats.totalCategories} />
+                <StatCard label="Modelos disponibles" value={stats.inStockCount} />
+                <StatCard label="Unidades registradas" value={stats.totalUnits} helper="Inventario inmediato" />
+              </div>
             </div>
-            {stats.lowStockCount > 0 ? (
-              <p className="mt-4 text-sm text-[#CC0000]" style={{ fontFamily: "Inter, sans-serif" }}>
-                {stats.lowStockCount} referencias con unidades limitadas. Consulte disponibilidad antes de ordenar.
-              </p>
-            ) : null}
           </div>
-        </section> */}
+        </section>
+
+        <section className="py-12 bg-[#fefefe]">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="text-3xl text-[#1A1A1A] mb-6" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
+              Cómo solicitar su producción
+            </h2>
+            <ol className="space-y-4 list-decimal list-inside text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
+              <li>Seleccione la referencia y el SKU que desea producir. Use el botón de WhatsApp para compartir cantidades, tallas y fechas.</li>
+              <li>Adjunte su logo o pida el servicio de diseño. Enviamos simulación digital en cuestión de horas.</li>
+              <li>Definimos técnica (DTF, sublimación o vinilo) y agendamos producción. Entregamos en 3 a 5 días hábiles, con opción express según disponibilidad.</li>
+            </ol>
+            <p className="mt-6 text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
+              También puede descargar el <a href="/brochure" className="text-[#CC0000] font-semibold underline">brochure con precios base</a> o escribirnos al correo <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] font-semibold underline">bayrondavid@moralisimo.com</a>.
+            </p>
+          </div>
+        </section>
 
         <section id="catalogo" className="py-16 sm:py-20 bg-[#fefefe]">
           <div className="container mx-auto px-4 max-w-6xl space-y-16">
@@ -367,7 +461,7 @@ export default async function ProductosPage() {
                   Catálogo no disponible temporalmente
                 </h2>
                 <p className="text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Ocurrió un inconveniente al consultar la información de productos. Verifique que el servidor de Strapi esté ejecutándose en {PRODUCTS_ENDPOINT}.
+                  Tuvimos un inconveniente al consultar Supabase. Reintenta en unos minutos o contáctanos por WhatsApp para recibir la lista actualizada.
                 </p>
               </div>
             ) : null}
@@ -378,7 +472,7 @@ export default async function ProductosPage() {
                   Estamos preparando el catálogo
                 </h2>
                 <p className="text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Aún no hay referencias disponibles. Actualiza la base de productos en Strapi para comenzar a mostrar inventario.
+                  Aún no hay referencias cargadas. Actualiza la base de datos en Supabase o escríbenos para recibir opciones disponibles en bodega.
                 </p>
               </div>
             ) : null}
@@ -412,12 +506,34 @@ export default async function ProductosPage() {
             ))}
           </div>
         </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 max-w-5xl text-center">
+            <h2 className="text-3xl text-[#1A1A1A] mb-4" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
+              ¿Listo para producir?
+            </h2>
+            <p className="text-sm text-[#556270] mb-6" style={{ fontFamily: "Inter, sans-serif" }}>
+              Escríbanos al <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="text-[#CC0000] font-semibold underline">WhatsApp corporativo</a> o envíe su brief a <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] font-semibold underline">bayrondavid@moralisimo.com</a>. También puede agendar visita en Sibundoy para ver muestras físicas.
+            </p>
+          </div>
+        </section>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: structuredDataJson }}
+        />
       </main>
 
       <footer className="bg-[#1A1A1A] text-white py-10">
         <div className="container mx-auto px-4 text-center text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
-          <p className="mb-2">© 2024 MORALISIMO Print Studio. Gráfica Ágil & Costo Inteligente.</p>
-          <p className="text-gray-400">Su socio local en soluciones de identidad y producción rápida.</p>
+          <p className="mb-2">© 2024 MORALISIMO Estampado & Diseño. Gráfica Ágil & Costo Inteligente.</p>
+          <p className="text-gray-300 mb-2">Atendemos desde Sibundoy, Putumayo, con cobertura regional y soporte por canales digitales.</p>
+          <p className="text-gray-300">
+            Contacto: <a href="mailto:bayrondavid@moralisimo.com" className="text-white underline">bayrondavid@moralisimo.com</a> ·
+            {' '}<a href="https://www.instagram.com/_moralisimo" target="_blank" rel="noopener noreferrer" className="text-white underline">Instagram</a> ·
+            {' '}<a href="https://www.tiktok.com/@moralisimo" target="_blank" rel="noopener noreferrer" className="text-white underline">TikTok</a> ·
+            {' '}<a href="https://www.facebook.com/profile.php?id=61579614505129" target="_blank" rel="noopener noreferrer" className="text-white underline">Facebook</a>
+          </p>
         </div>
       </footer>
     </>

@@ -17,6 +17,17 @@ export default function ContactSection() {
           Deje de pagar precios de ciudad por tiempos de respuesta lentos. Contáctenos hoy para recibir su presupuesto de diseño y producción en tiempo récord.
         </p>
         <div className="space-y-4 text-left bg-white p-8 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-t-4 border-t-[#1A1A1A]">
+          <div className="text-sm text-[#556270] space-y-2" style={{fontFamily: 'Inter, sans-serif'}}>
+            <p>Atendemos desde Sibundoy, Putumayo, y despachamos a todo el sur de Colombia. Escríbenos cuando necesites uniformes, regalos corporativos o diseño de marca.</p>
+            <p>
+              <strong className="text-[#1A1A1A]">Contacto directo:</strong> <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] underline">bayrondavid@moralisimo.com</a>
+            </p>
+            <ul className="flex flex-wrap gap-3 text-xs uppercase tracking-[0.18em] text-[#1A1A1A]">
+              <li><a href="https://www.instagram.com/_moralisimo" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">Instagram</a></li>
+              <li><a href="https://www.tiktok.com/@moralisimo" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">TikTok</a></li>
+              <li><a href="https://www.facebook.com/profile.php?id=61579614505129" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">Facebook</a></li>
+            </ul>
+          </div>
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-[#1A1A1A]">Describa su Proyecto (Identidad, Uniformes, Merchandising)</label>
             <textarea

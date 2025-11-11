@@ -1,6 +1,30 @@
 import ContactSection from '@/components/ContactSection';
 import LazyImageCarousel from '@/components/LazyImageCarousel';
 
+export const metadata = {
+  title: "Estampados y Merchandising en Sibundoy | MORALISIMO Estampado & Diseño",
+  description:
+    "Uniformes empresariales, diseño de marca y merchandising personalizado con entregas ágiles en Sibundoy y Putumayo.",
+  keywords: [
+    "estampado DTF Sibundoy",
+    "uniformes empresariales Putumayo",
+    "merchandising corporativo sur de Colombia",
+    "sublimación Sibundoy",
+    "diseño de marca express"
+  ],
+  openGraph: {
+    title: "Estampados y Merchandising en Sibundoy | MORALISIMO Estampado & Diseño",
+    description:
+      "Soluciones de identidad, uniformes personalizados y regalos corporativos en Sibundoy, Putumayo."
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Estampados y Merchandising en Sibundoy | MORALISIMO Estampado & Diseño",
+    description:
+      "Diseño y producción de uniformes, mugs, gorras y piezas gráficas con tiempos express."
+  }
+};
+
 // import fs from 'fs';
 // import path from 'path';
 
@@ -79,37 +103,117 @@ async function getMediaFilesFromPublic() {
 export default async function Home() {
   // gather media files from public/images (recursive). If empty, we'll use the existing placeholders.
   const gallery = await getMediaFilesFromPublic();
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Estampado y merchandising personalizado",
+    provider: {
+      "@type": "Organization",
+      name: "MORALISIMO Estampado & Diseño",
+      url: "https://moralisimo.com"
+    },
+    serviceType: "Diseño de imagen corporativa y producción textil",
+    areaServed: ["Sibundoy", "Putumayo", "Nariño", "Sur de Colombia"],
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: "https://wa.me/573001234567"
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Catálogo MORALISIMO",
+      url: "https://moralisimo.com/productos"
+    }
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "¿En qué ciudades entregan los pedidos de estampado?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Despachamos desde Sibundoy a todo Putumayo, Nariño y ciudades del sur de Colombia con aliados logísticos y seguimiento por WhatsApp."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "¿Qué técnicas de personalización manejan?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Trabajamos con DTF, sublimación y vinilo textil para uniformes, gorras, mugs y material promocional según el uso y el tipo de prenda."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "¿Cuál es el tiempo de entrega típico?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Las propuestas de diseño se aprueban en horas y producimos en 3 a 5 días hábiles dependiendo de la cantidad, con opciones express para eventos urgentes."
+        }
+      }
+    ]
+  };
+  const structuredDataJson = JSON.stringify([serviceSchema, faqSchema]);
   return (
     <>
       <div className="pt-20">
         <main>
           <section className="bg-white pt-16 pb-20 sm:pt-24 sm:pb-32 border-b-8 border-[#CC0000] min-h-screen flex items-center">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-              <span className="text-[#CC0000]">DISEÑO</span> INSTANTÁNEO. <br className="hidden sm:inline" /> PRECIOS INIGUALABLES.
-            </h1>
-            <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-10" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Somos MORALISIMO <span className="font-bold text-[#1A1A1A]">(MSM) Estampado & Diseño</span>. La <strong>revolución</strong> de la imagen local. Seriedad técnica, <strong>gestión rápida del pedido</strong> y precios que la competencia no puede igualar gracias a <strong>proveedores estratégicos</strong>.
-            </p>
-            <a
-              href="#contacto"
-              className="inline-block w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105 shadow-xl max-w-md mx-auto"
-              style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-              ¡Pida su Cotización ahora!
-            </a>
-
-            <p className="mt-4 text-sm text-[#556270] max-w-2xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
-              ¿No está seguro por dónde empezar? En nuestro <a href="/brochure" className="text-[#CC0000] font-semibold underline">Brochure</a> encontrará los productos más comunes y cotizados, con precios ya definidos para cotizar de forma inmediata.
-            </p>
-          </div>
-        </section>
+            <div className="container mx-auto px-4 text-center">
+              <p className="uppercase text-sm tracking-[0.35em] text-[#9AA0A6] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Estudio textil en Sibundoy, Putumayo
+              </p>
+              <h1 className="text-5xl sm:text-7xl lg:text-8xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+                Estampados profesionales y merchandising corporativo
+              </h1>
+              <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
+                En <strong>MORALISIMO Estampado & Diseño</strong> convertimos sus ideas en uniformes, regalos empresariales y piezas gráficas inolvidables. Operamos desde Sibundoy para todo Putumayo, Nariño y sur de Colombia con <strong>tiempos express, diseños listos en horas</strong> y economías de escala gracias a nuestra red de proveedores directos.
+              </p>
+              <div className="flex flex-col sm:flex-row sm:justify-center gap-4 max-w-3xl mx-auto">
+                <a
+                  href="#contacto"
+                  className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105 shadow-xl"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Solicitar cotización express
+                </a>
+                <a
+                  href="/productos"
+                  className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 border border-[#1A1A1A] text-[#1A1A1A] text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-[#1A1A1A] hover:text-white"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Ver catálogo en línea
+                </a>
+              </div>
+              <div className="mt-8 grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto text-left text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <div className="bg-[#F7F7F7] rounded-xl p-5">
+                  <h2 className="text-[#1A1A1A] text-lg font-semibold mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>DTF, sublimación y vinilo profesional</h2>
+                  <p>Producción para camisetas, hoodies, gorras, mugs y material POP sin mínimos extremos y con acabados resistentes a uso corporativo.</p>
+                </div>
+                <div className="bg-[#F7F7F7] rounded-xl p-5">
+                  <h2 className="text-[#1A1A1A] text-lg font-semibold mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Diseño estratégico listo para imprimir</h2>
+                  <p>Desarrollamos logos, manuales cromáticos y piezas de comunicación para emprendimientos y organizaciones que necesitan salir al mercado rápido.</p>
+                </div>
+                <div className="bg-[#F7F7F7] rounded-xl p-5">
+                  <h2 className="text-[#1A1A1A] text-lg font-semibold mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Cobertura Putumayo y sur del país</h2>
+                  <p>Despachamos desde Sibundoy hacia Pasto, Mocoa, Ipiales y todo el sur de Colombia con seguimiento en tiempo real vía WhatsApp.</p>
+                </div>
+              </div>
+              <p className="mt-6 text-sm text-[#556270] max-w-2xl mx-auto" style={{ fontFamily: 'Inter, sans-serif' }}>
+                ¿Quiere precios de referencia inmediatos? Descargue el <a href="/brochure" className="text-[#CC0000] font-semibold underline">brochure de productos</a> o revise nuestro <a href="/productos" className="text-[#CC0000] font-semibold underline">catálogo vivo conectado a Supabase</a>.
+              </p>
+            </div>
+          </section>
 
   <section id="pvp" className="pt-10 sm:pt-28 bg-[#fefefe] min-h-screen flex items-start">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl sm:text-5xl text-center mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
               LA <span className="text-[#CC0000]">FÓRMULA</span> DEL PRECIO BAJO Y LA GESTIÓN ÁGIL
             </h2>
+            <p className="max-w-3xl mx-auto text-center text-sm text-[#556270] mb-10" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Estamos ubicados en Sibundoy y trabajamos con logística integrada hacia Putumayo y Nariño. La combinación de software, alianzas con talleres aliados y compras directas en Asia nos permite entregar mejor precio sin sacrificar acabados ni puntualidad.
+            </p>
               {/* Shared carousel for the three cards */}
               <div className="max-w-6xl mx-auto">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -126,7 +230,7 @@ export default async function Home() {
                                   'https://placehold.co/1200x800?text=Galeria+3'
                                 ]
                           }
-                          alt="Galería de productos"
+                          alt="Estampados personalizados en Sibundoy"
                           interval={4000}
                           className="w-full h-full rounded-xl shadow-lg"
                           rootMargin="50px"
@@ -190,13 +294,101 @@ export default async function Home() {
           </div>
         </section>
 
+        <section id="sectores" className="py-20 bg-white">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="text-4xl sm:text-5xl text-center mb-10 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+              Sectores que confían en MORALISIMO
+            </h2>
+            <p className="max-w-3xl mx-auto text-center text-sm text-[#556270] mb-12" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Gestionamos proyectos para empresas de servicios, turismo, gastronomía, educación y eventos comunitarios en Putumayo. Coordinamos entregas con guías certificadas y mantenemos comunicación constante por email (<a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] underline">bayrondavid@moralisimo.com</a>) y redes sociales.
+            </p>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="border border-[#F0F0F0] rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] bg-[#fefefe]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Uniformes empresariales y retail</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Kits para equipos comerciales, dotación industrial y ropa de tienda con numeración, cargos y personalizaciones unitarias.
+                </p>
+              </div>
+              <div className="border border-[#F0F0F0] rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] bg-[#fefefe]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Turismo, gastronomía y emprendimientos locales</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Menús, manteles, delantales, vasos y recordatorios para hoteles, restaurantes y experiencias turísticas que buscan coherencia visual.
+                </p>
+              </div>
+              <div className="border border-[#F0F0F0] rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] bg-[#fefefe]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Eventos institucionales y educativos</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Campañas culturales, ferias y brigadas estudiantiles con camisetas, gorras y pendones producidos en tiempos récord.
+                </p>
+              </div>
+              <div className="border border-[#F0F0F0] rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] bg-[#fefefe]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Regalos empresariales y fidelización</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Kits de bienvenida, cajas personalizadas y merchandising premium para cerrar negocios o agradecer a clientes estratégicos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="faq" className="py-20 bg-[#f7f7f7]">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <h2 className="text-4xl sm:text-5xl text-center mb-10 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+              Preguntas frecuentes
+            </h2>
+            <div className="space-y-4">
+              <details className="group bg-white border border-[#E5E7EB] rounded-xl p-5 shadow-sm">
+                <summary className="flex items-center justify-between cursor-pointer text-base font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿En qué ciudades entregan los pedidos?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Hacemos entregas locales en Sibundoy y coordinamos envíos hacia Mocoa, Puerto Asís, Pasto, Ipiales y otras ciudades del sur del país. Todos los despachos se gestionan con mensajería confiable y guía rastreable.
+                </p>
+              </details>
+              <details className="group bg-white border border-[#E5E7EB] rounded-xl p-5 shadow-sm">
+                <summary className="flex items-center justify-between cursor-pointer text-base font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Cuáles son las técnicas de personalización disponibles?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Seleccionamos la técnica ideal según el material y el uso final. Contamos con DTF para colores sólidos y degradados, sublimación para poliéster y vinilo textil de alto desempeño para prendas de trabajo intensivo.
+                </p>
+              </details>
+              <details className="group bg-white border border-[#E5E7EB] rounded-xl p-5 shadow-sm">
+                <summary className="flex items-center justify-between cursor-pointer text-base font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Cuál es el tiempo de producción promedio?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Las propuestas de diseño se aprueban en cuestión de horas. Para producción trabajamos en ciclos de 3 a 5 días hábiles, con opciones express según la cantidad y el tipo de producto.
+                </p>
+              </details>
+            </div>
+            <p className="mt-6 text-center text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+              ¿Listo para comenzar? Escríbanos al <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer" className="text-[#CC0000] font-semibold underline">WhatsApp corporativo</a> o envíe un correo a <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] font-semibold underline">bayrondavid@moralisimo.com</a>.
+            </p>
+          </div>
+        </section>
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: structuredDataJson }}
+        />
+
         <ContactSection />
         </main>
 
         <footer className="bg-[#1A1A1A] text-white py-10">
           <div className="container mx-auto px-4 text-center text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
             <p className="mb-2">© 2026 MSM Estampado & Diseño. Moralisimo.com. <br /> <strong>Costo Inteligente.</strong></p>
-            <p className="text-gray-400">Su socio local en soluciones de imagen rápida y producción con estructura de costo mínimo.</p>
+            <p className="text-gray-400 mb-3">Su socio local en soluciones de imagen rápida y producción con estructura de costo mínimo.</p>
+            <p className="text-gray-300">
+              Escríbanos a <a href="mailto:bayrondavid@moralisimo.com" className="text-white underline">bayrondavid@moralisimo.com</a> o síganos en
+              {' '}<a href="https://www.instagram.com/_moralisimo" target="_blank" rel="noopener noreferrer" className="text-white underline">Instagram</a>,
+              {' '}<a href="https://www.tiktok.com/@moralisimo" target="_blank" rel="noopener noreferrer" className="text-white underline">TikTok</a> y
+              {' '}<a href="https://www.facebook.com/profile.php?id=61579614505129" target="_blank" rel="noopener noreferrer" className="text-white underline">Facebook</a>.
+            </p>
           </div>
         </footer>
       </div>

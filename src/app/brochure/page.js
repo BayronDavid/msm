@@ -2,6 +2,31 @@ import ContactSection from '@/components/ContactSection';
 import LazyImageCarousel from '@/components/LazyImageCarousel';
 import BROCHURE_DATA from '@/data/brochure.json';
 
+export const metadata = {
+  title: "Brochure de precios base | MORALISIMO Print Studio",
+  description:
+    "Lista de precios de uniformes, mugs, gorras y souvenirs personalizados producidos por MORALISIMO Print Studio en Sibundoy, Putumayo.",
+  keywords: [
+    "brochure de estampados",
+    "precios merchandising Putumayo",
+    "uniformes corporativos Sibundoy",
+    "dtf precios",
+    "mugs personalizados colombia"
+  ],
+  openGraph: {
+    title: "Brochure MORALISIMO | Precios base",
+    description:
+      "Consulta precios de referencia para camisetas, hoodies y souvenirs personalizados producidos por MORALISIMO Print Studio en Sibundoy, Putumayo.",
+    url: "https://moralisimo.com/brochure"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brochure MORALISIMO",
+    description:
+      "Lista de precios de uniformes y merchandising personalizados con producción express en Putumayo."
+  }
+};
+
 // Mostrar precios sin símbolo de dólar: formato numérico local + sufijo 'COP'
 const numberFmt = new Intl.NumberFormat('es-CO', { minimumFractionDigits: 0 });
 
@@ -84,17 +109,60 @@ export default function BrochurePage() {
     const EMBR_TITLE = 'Estampado & Diseño';
     const EMBR_LEMA = 'Precios imbatibles gracias a la adquisición estratégica en volumen.';
     const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(`Hola! Vi el folleto de ${EMBR_TITLE} y quiero cotizar productos.`)}`;
+    const offerCatalogSchema = {
+      "@context": "https://schema.org",
+      "@type": "OfferCatalog",
+      name: "Brochure MORALISIMO Print Studio",
+      url: "https://moralisimo.com/brochure",
+      itemListElement: BROCHURE_DATA.productos.map((p, index) => ({
+        "@type": "Offer",
+        position: index + 1,
+        itemOffered: {
+          "@type": "Product",
+          name: p.nombre,
+          description: p.observaciones,
+          category: p.tecnica,
+          brand: "MORALISIMO Print Studio"
+        },
+        priceSpecification: [
+          {
+            "@type": "UnitPriceSpecification",
+            price: Number(p.precio_unitario_menos_de_6_unidades) || 0,
+            priceCurrency: "COP",
+            unitText: "1-5 unidades"
+          },
+          {
+            "@type": "UnitPriceSpecification",
+            price: Number(p.precio_unitario_mas_de_6_unidades) || 0,
+            priceCurrency: "COP",
+            unitText: "6 o más unidades"
+          }
+        ]
+      }))
+    };
+    const structuredDataJson = JSON.stringify(offerCatalogSchema);
 
   return (
     <main className="pt-20">
       <section className="bg-white min-h-screen flex items-center pt-16 pb-16 sm:pt-24 sm:pb-24 border-b-8 border-[#CC0000]">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl sm:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>MORALISIMO (MSM)</h1>
-            <h4 className="text-4xl sm:text-5xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>{EMBR_TITLE}</h4>
-            <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>{EMBR_LEMA}</p>
-            <p className="max-w-3xl mx-auto text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Más abajo encontrarás nuestros productos más vendidos y sus precios ya definidos. Si necesitas el precio final exacto para tu pedido (por cantidades, tallas o personalizaciones), solicita una cotización por WhatsApp.
+          <h4 className="text-4xl sm:text-5xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>{EMBR_TITLE}</h4>
+          <p className="uppercase text-sm tracking-[0.3em] text-[#9AA0A6] mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+            Sibundoy | Putumayo | Colombia
+          </p>
+          <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>{EMBR_LEMA}</p>
+          <p className="max-w-3xl mx-auto text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+            Más abajo encontrarás nuestros productos más vendidos y sus precios de referencia. Este brochure es ideal para estimar presupuestos rápidos; el valor final se confirma al compartir cantidades, tallas y uso de la prenda.
+          </p>
+          <div className="max-w-3xl mx-auto text-sm text-[#1A1A1A] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="mb-2">Contacto directo: <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] font-semibold underline">bayrondavid@moralisimo.com</a></p>
+            <p className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.18em] text-[#556270]">
+              <a href="https://www.instagram.com/_moralisimo" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">Instagram</a>
+              <a href="https://www.tiktok.com/@moralisimo" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">TikTok</a>
+              <a href="https://www.facebook.com/profile.php?id=61579614505129" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">Facebook</a>
             </p>
+          </div>
             <div className="w-full max-w-lg mx-auto">
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a href="/productos" className="w-full sm:w-auto inline-block px-6 py-3 bg-[#CC0000] text-white font-bold uppercase rounded-lg shadow-md hover:scale-[1.02] transition text-center" style={{ fontFamily: 'Inter, sans-serif' }}>Ver catálogo completo</a>
@@ -139,6 +207,51 @@ export default function BrochurePage() {
           </div>
         </div>
       </section>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <h2 className="text-3xl text-[#1A1A1A] mb-6" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+            Política de precios y tiempos de entrega
+          </h2>
+          <p className="text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+            Los valores publicados son base para proyectos locales en Sibundoy y Putumayo. Para envíos nacionales ajustamos costos logísticos según destino. Las órdenes express pueden incluir recargo si requieren priorización de máquina.
+          </p>
+          <div className="space-y-4">
+            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                ¿Los precios incluyen diseño?
+                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Incluimos adaptación técnica del logo sin costo para garantizar calidad de impresión. Conceptos nuevos o rediseños completos se cotizan aparte según alcance.
+              </p>
+            </details>
+            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                ¿Cuál es el tiempo de producción estándar?
+                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Después de aprobar diseño y pago inicial, producimos entre 3 y 5 días hábiles. Para pedidos mayores a 100 unidades coordinamos una programación especial.
+              </p>
+            </details>
+            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                ¿Qué métodos de pago aceptan?
+                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Transferencias bancarias, Nequi y consignaciones. Para empresas emitimos factura electrónica y acuerdos de pago según política de compras.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: structuredDataJson }}
+      />
 
       <ContactSection />
     </main>
