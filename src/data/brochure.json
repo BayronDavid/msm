@@ -1,4 +1,5 @@
 {
+  "emprendimiento": "MORALISIMO MSM",
   "nota_importante_precios": "Los precios unitarios son base para pedidos estándar. El valor final exacto se define al solicitar la cotización y depende únicamente de estos tres factores: 1. El TAMAÑO de su logo o imagen. 2. Si desea una CALIDAD o marca premium en la prenda. 3. La COMPLEJIDAD del diseño a imprimir (ej. muchos colores o efectos especiales).",
   "productos": [
     {
@@ -6,42 +7,48 @@
       "tecnica": "Sublimación (Máxima Calidad)",
       "precio_unitario_menos_de_6_unidades": 12000,
       "precio_unitario_mas_de_6_unidades": 10000,
-      "observaciones": "Nuestro mug de cerámica es de calidad A/AA, ideal para uso diario e imagen corporativa. (El precio puede aumentar por mugs con interior de color, mágicos o diseños que cubran toda la superficie de extremo a extremo)."
+      "observaciones": "Nuestro mug de cerámica es de calidad A/AA, ideal para uso diario e imagen corporativa. (El precio puede aumentar por mugs con interior de color, mágicos o diseños que cubran toda la superficie de extremo a extremo).",
+      "images": ["/images/productos/mug-blanco-11oz-1.jpg"]
     },
     {
       "nombre": "Camiseta Deportiva 'Piel de Durazno' Personalizada (Colores Claros)",
       "tecnica": "Sublimación (Estampado sin tacto, máxima durabilidad)",
       "precio_unitario_menos_de_6_unidades": 25000,
       "precio_unitario_mas_de_6_unidades": 22000,
-      "observaciones": "El estampado es a full color, permanente y no tiene 'tacto'. El precio es para tallas estándar (S a XL). Tallas especiales (XXL o más) o un estampado que cubra toda la espalda, tienen un ajuste en el costo."
+      "observaciones": "El estampado es a full color, permanente y no tiene 'tacto'. El precio es para tallas estándar (S a XL). Tallas especiales (XXL o más) o un estampado que cubra toda la espalda, tienen un ajuste en el costo.",
+      "images": ["/images/productos/camiseta-piel-durazno-1.jpg"]
     },
     {
       "nombre": "Camiseta Tipo Polo de Poliéster Personalizada",
       "tecnica": "Sublimación",
       "precio_unitario_menos_de_6_unidades": 35000,
       "precio_unitario_mas_de_6_unidades": 32000,
-      "observaciones": "Ideal para uniformes. El precio cubre un logo frontal y uno trasero de tamaño estándar. Si requiere bordado profesional o un logo muy grande en la espalda, el valor se ajusta en la cotización."
+      "observaciones": "Ideal para uniformes. El precio cubre un logo frontal y uno trasero de tamaño estándar. Si requiere bordado profesional o un logo muy grande en la espalda, el valor se ajusta en la cotización.",
+      "images": ["/images/productos/camiseta-polo-poliester-1.jpg"]
     },
     {
       "nombre": "Camiseta de Algodón Personalizada (DTF)",
       "tecnica": "DTF (Estampado de alta definición para algodón)",
       "precio_unitario_menos_de_6_unidades": 40000,
       "precio_unitario_mas_de_6_unidades": 35000,
-      "observaciones": "El DTF permite un estampado a full color y alta definición en 100% algodón. El precio se basa en un estampado de tamaño promedio (similar a una hoja A4). El área total del estampado es el factor principal de cambio en el precio."
+      "observaciones": "El DTF permite un estampado a full color y alta definición en 100% algodón. El precio se basa en un estampado de tamaño promedio (similar a una hoja A4). El área total del estampado es el factor principal de cambio en el precio.",
+      "images": ["/images/productos/camiseta-algodon-dtf-1.jpg"]
     },
     {
       "nombre": "Gorra de Malla (Trucker) Personalizada",
       "tecnica": "Estampado Digital de Precisión",
       "precio_unitario_menos_de_6_unidades": 20000,
       "precio_unitario_mas_de_6_unidades": 17000,
-      "observaciones": "Precio para logo o diseño estampado en el frente. Una gorra de alta calidad, perfecta para promocionales o *merchandising*."
+      "observaciones": "Precio para logo o diseño estampado en el frente. Una gorra de alta calidad, perfecta para promocionales o *merchandising*.",
+      "images": ["/images/productos/gorra-malla-trucker-1.jpg"]
     },
     {
       "nombre": "Gorra Acrílica (6 Paneles) Personalizada",
       "tecnica": "Estampado Digital de Precisión",
       "precio_unitario_menos_de_6_unidades": 23000,
       "precio_unitario_mas_de_6_unidades": 20000,
-      "observaciones": "Gorra estructurada con frente firme. Precio con logo estándar. Si requiere dos o más logos (frente y lateral, por ejemplo) o bordado, el costo se ajusta."
+      "observaciones": "Gorra estructurada con frente firme. Precio con logo estándar. Si requiere dos o más logos (frente y lateral, por ejemplo) o bordado, el costo se ajusta.",
+      "images": ["/images/productos/gorra-acrilica-6panel-1.jpg"]
     }
   ]
 }

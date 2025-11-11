@@ -62,7 +62,7 @@ export default function BrochurePage() {
             <h1 className="text-5xl sm:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>{EMBR_TITLE}</h1>
             <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>{EMBR_LEMA}</p>
             <p className="max-w-3xl mx-auto text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Más abajo encontrarás nuestros productos más vendidos y sus precios orientativos. Si quieres el precio final exacto para tu pedido, solicita una cotización por WhatsApp.
+              Más abajo encontrarás nuestros productos más vendidos y sus precios ya definidos. Si necesitas el precio final exacto para tu pedido (por cantidades, tallas o personalizaciones), solicita una cotización por WhatsApp.
             </p>
             <div className="flex items-center justify-center gap-4">
             <a href="/productos" className="inline-block px-6 py-3 bg-[#CC0000] text-white font-bold uppercase rounded-lg shadow-md hover:scale-[1.02] transition" style={{ fontFamily: 'Inter, sans-serif' }}>Ver catálogo completo</a>
@@ -95,13 +95,13 @@ export default function BrochurePage() {
               <div className="flex flex-col md:flex-row md:items-start md:gap-6">
                 <div className="md:w-1/3 text-sm font-semibold text-[#1A1A1A]">Conceptualización de Marca</div>
                 <div className="md:flex-1 text-sm text-[#556270]">Si solo tiene una idea o necesita un rediseño que implique crear nuevos elementos gráficos, tipografía y estructuras. Generación de una (1) propuesta base + dos ajustes.</div>
-                <div className="md:w-48 text-sm font-semibold text-[#1A1A1A] text-right">Desde {numberFmt.format(45000)} COP (Se cotiza según la complejidad de la idea)</div>
+                <div className="md:w-48 text-sm font-semibold text-[#1A1A1A] text-right">Desde {numberFmt.format(55000)} COP (Se cotiza según la complejidad de la idea)</div>
               </div>
             </div>
           </div>
 
           <div className="mt-8 text-center">
-            <p className="text-sm text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>Estos son nuestros productos más vendidos — solicita la cotización para obtener precio final exacto.</p>
+            <p className="text-sm text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>Estos son nuestros productos más vendidos <br/> Revisa nuestro catalogo completo y solicita la cotización para obtener precio final exacto.</p>
             <a href="/productos" className="inline-block px-8 py-3 bg-[#1A1A1A] text-white font-bold uppercase rounded-xl shadow-md" style={{ fontFamily: 'Inter, sans-serif' }}>Ir al Catálogo</a>
           </div>
         </div>
