@@ -164,35 +164,37 @@ export default async function Home() {
               <p className="uppercase text-sm tracking-[0.35em] text-[#9AA0A6] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Estudio textil en Sibundoy, Putumayo
               </p>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-                Estampados profesionales y merchandising corporativo
+
+              {/* H1 CAMBIADO - Elimina 'EN HORAS', mantiene 'ÁGIL' */}
+              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bebas tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+                IDENTIDAD PROFESIONAL. <span className="text-[#CC0000]">RESPUESTA ÁGIL.</span>
               </h1>
+
               <p className="max-w-2xl mx-auto text-xl sm:text-1xl text-[#556270] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
-                En <strong>MORALISIMO Estampado & Diseño</strong> convertimos sus ideas en uniformes, regalos empresariales y piezas gráficas inolvidables. Operamos desde Sibundoy para todo Putumayo, Nariño y sur de Colombia con <strong>tiempos express, diseños listos en horas</strong> y economías de escala gracias a nuestra red de proveedores directos.
+                En <strong>MORALISIMO Estampado & Diseño</strong> convertimos sus ideas en uniformes, regalos empresariales y piezas gráficas inolvidables. Operamos desde Sibundoy para todo Putumayo, Nariño y sur de Colombia con <strong>tiempos express, gestión ágil</strong> y economías de escala gracias a nuestra red de proveedores directos.
               </p>
+
               <div className="mt-8 max-w-2xl mx-auto">
-                <p className="text-lg text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Producción de uniformes, merchandising y diseño listos para impresión. Calidad profesional desde Sibundoy con entregas al sur de Colombia.
-                </p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
+
+                  {/* Botón 1: Vitrina (Catálogo) */}
                   <a
-                    href="#contacto"
+                    href="/catalogo"
                     className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
-                    Solicitar cotización
+                    Ver Catálogo (Precios y Ejemplos)
                   </a>
+
+                  {/* Botón 2: Bodega (Inventario) */}
                   <a
                     href="/inventario"
                     className="inline-flex justify-center items-center px-6 sm:px-10 py-3 sm:py-4 border border-[#1A1A1A] text-[#1A1A1A] text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-[#1A1A1A] hover:text-white"
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
-                    Ver inventario
+                    Ver Inventario Completo
                   </a>
                 </div>
-                <p className="mt-4 text-sm text-[#556270] text-center" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Vea nuestro <a href="/catalogo" className="text-[#CC0000] font-semibold underline">catálogo rápido (productos más vendidos)</a> o explore el <a href="/inventario" className="text-[#CC0000] font-semibold underline">inventario completo</a>.
-                </p>
               </div>
             </div>
           </section>
