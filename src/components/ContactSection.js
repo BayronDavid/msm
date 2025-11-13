@@ -14,7 +14,7 @@ export default function ContactSection() {
           CONFÍE EN LA <span className="text-[#CC0000]">EFICIENCIA</span>.
         </h2>
         <p className="text-xl text-[#556270] mb-10" style={{fontFamily: 'Inter, sans-serif'}}>
-          Deje de pagar precios de ciudad por tiempos de respuesta lentos. Contáctenos hoy para recibir su presupuesto de diseño y producción en tiempo récord.
+          Deje de pagar precios de ciudad por tiempos de respuesta lentos. Contáctenos hoy para recibir su presupuesto de diseño y producción en tiempo récord para <strong>camisetas personalizadas Putumayo</strong>, <strong>uniformes deportivos baratos Mocoa</strong> o <strong>estampados al por mayor Pasto</strong>.
         </p>
         <div className="space-y-4 text-left bg-white p-8 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-t-4 border-t-[#1A1A1A]">
           <div className="text-sm text-[#556270] space-y-2" style={{fontFamily: 'Inter, sans-serif'}}>

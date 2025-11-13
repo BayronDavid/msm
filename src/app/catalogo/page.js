@@ -3,28 +3,40 @@ import LazyImageCarousel from '@/components/LazyImageCarousel';
 import NoSnapDisable from '@/components/NoSnapDisable';
 import CATALOGO_DATA from '@/data/catalogo.json';
 
+const CATALOGO_KEYWORDS = [
+  "catálogo camisetas personalizadas Putumayo",
+  "uniformes deportivos baratos Mocoa",
+  "estampados al por mayor Pasto",
+  "dotaciones empresariales Nariño",
+  "mugs con foto Mocoa",
+  "gorras bordadas personalizadas Pasto",
+  "chalecos para moto y empresa",
+  "buzos prom 11 Putumayo y Nariño",
+  "fábrica de uniformes envíos al sur",
+  "diseño grafico express sur de colombia",
+  "diseño gráfico express sur de Colombia"
+];
+
 export const metadata = {
-  title: "Catálogo de precios base | MORALISIMO Print Studio",
+  title: "Catálogo camisetas personalizadas Putumayo | MORALISIMO Print Studio",
   description:
-    "Catálogo rápido con precios de uniformes, mugs, gorras y souvenirs personalizados producidos por MORALISIMO Print Studio en Sibundoy, Putumayo.",
-  keywords: [
-    "catálogo de estampados",
-    "precios merchandising Putumayo",
-    "uniformes corporativos Sibundoy",
-    "dtf precios",
-    "mugs personalizados colombia"
-  ],
+    "Precios base de camisetas personalizadas en Putumayo, uniformes deportivos baratos para Mocoa, estampados al por mayor en Pasto y dotaciones empresariales para Nariño.",
+  keywords: CATALOGO_KEYWORDS,
+  alternates: {
+    canonical: "https://moralisimo.com/catalogo"
+  },
   openGraph: {
-    title: "Catálogo MORALISIMO | Precios base",
+    title: "Catálogo MORALISIMO | Camisetas y uniformes para el sur de Colombia",
     description:
-      "Consulta precios de referencia para camisetas, hoodies y souvenirs personalizados producidos por MORALISIMO Print Studio en Sibundoy, Putumayo.",
-    url: "https://moralisimo.com/catalogo"
+      "Consulta precios y combos de camisetas personalizadas, gorras bordadas y merchandising para Putumayo, Mocoa, Pasto y Nariño.",
+    url: "https://moralisimo.com/catalogo",
+    locale: "es_CO"
   },
   twitter: {
     card: "summary_large_image",
     title: "Catálogo MORALISIMO",
     description:
-      "Lista de precios de uniformes y merchandising personalizados con producción express en Putumayo."
+      "Uniformes, mugs y gorras personalizadas con envíos al sur de Colombia y producción express."
   }
 };
 
@@ -108,13 +120,14 @@ export default function CatalogoPage() {
   const phone = (process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '573001234567').replace(/[^\d]/g, '');
   // Emprendimiento y lema quemados en la página (no consumir desde JSON)
   const EMBR_TITLE = 'Estampado & Diseño';
-  const EMBR_LEMA = 'Precios imbatibles gracias a la adquisición estratégica en volumen.';
+  const EMBR_LEMA = 'Precios imbatibles gracias a la adquisición estratégica en volumen para Putumayo, Mocoa, Pasto y Nariño.';
   const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(`Hola! Vi el catálogo de ${EMBR_TITLE} y quiero cotizar productos.`)}`;
   const offerCatalogSchema = {
     "@context": "https://schema.org",
     "@type": "OfferCatalog",
     name: "Catálogo MORALISIMO Print Studio",
     url: "https://moralisimo.com/catalogo",
+    keywords: CATALOGO_KEYWORDS,
     itemListElement: CATALOGO_DATA.productos.map((p, index) => ({
       "@type": "Offer",
       position: index + 1,
@@ -156,7 +169,7 @@ export default function CatalogoPage() {
           </p>
           <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>{EMBR_LEMA}</p>
           <p className="max-w-3xl mx-auto text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Más abajo encontrarás nuestros productos más vendidos y sus precios de referencia. Este catálogo es ideal para estimar presupuestos rápidos; el valor final se confirma al compartir cantidades, tallas y uso de la prenda.
+            Más abajo encontrarás nuestros productos más vendidos y sus precios de referencia. Este catálogo es ideal para estimar presupuestos rápidos; el valor final se confirma al compartir cantidades, tallas y uso de la prenda. Aquí podrás cotizar <strong>uniformes deportivos baratos Mocoa</strong>, <strong>estampados al por mayor Pasto</strong> y <strong>dotaciones empresariales Nariño</strong> en un solo lugar.
           </p>
           <div className="max-w-3xl mx-auto text-sm text-[#1A1A1A] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
             <p className="mb-2">Contacto directo: <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] font-semibold underline">bayrondavid@moralisimo.com</a></p>
@@ -165,6 +178,22 @@ export default function CatalogoPage() {
               <a href="https://www.tiktok.com/@moralisimo" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">TikTok</a>
               <a href="https://www.facebook.com/profile.php?id=61579614505129" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">Facebook</a>
             </p>
+          </div>
+          <div className="max-w-4xl mx-auto mb-10">
+            <div className="grid gap-4 sm:grid-cols-2 text-left">
+              <div className="bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+                <h5 className="text-lg text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Paquetes regionales destacados</h5>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Combo de <strong>camisetas personalizadas Putumayo</strong> con numeración individual, además de <strong>buzos prom 11 Putumayo y Nariño</strong> listos para entrega antes de ceremonias escolares.
+                </p>
+              </div>
+              <div className="bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+                <h5 className="text-lg text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Merchandising a medida</h5>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Incluimos <strong>mugs con foto Mocoa</strong>, <strong>gorras bordadas personalizadas Pasto</strong> y <strong>chalecos para moto y empresa</strong> con reflectivos para cuadrillas urbanas.
+                </p>
+              </div>
+            </div>
           </div>
           <div className="w-full max-w-lg mx-auto">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -221,7 +250,7 @@ export default function CatalogoPage() {
 
               <div className="flex flex-col md:flex-row md:items-start md:gap-6">
                 <div className="md:w-1/3 text-sm font-semibold text-[#1A1A1A]">Conceptualización de Marca</div>
-                <div className="md:flex-1 text-sm text-[#556270]">Si solo tiene una idea o necesita un rediseño que implique crear nuevos elementos gráficos, tipografía y estructuras. Generación de una (1) propuesta base + dos ajustes.</div>
+                <div className="md:flex-1 text-sm text-[#556270]">Si solo tiene una idea o necesita un rediseño que implique crear nuevos elementos gráficos, tipografía y estructuras. Generación de una (1) propuesta base + dos ajustes. Nuestro <strong>diseño grafico express sur de colombia</strong> asegura archivos listos para impresión en horas.</div>
                 <div className="md:w-48 text-sm font-semibold text-[#1A1A1A] text-right">Desde {numberFmt.format(55000)} COP (Se cotiza según la complejidad de la idea)</div>
               </div>
             </div>
@@ -268,6 +297,24 @@ export default function CatalogoPage() {
               </summary>
               <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Transferencias bancarias, Nequi y consignaciones. Para empresas emitimos factura electrónica y acuerdos de pago según política de compras.
+              </p>
+            </details>
+            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                ¿Hacen gorras bordadas personalizadas Pasto?
+                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Sí. Producimos gorras con bordado plano o en relieve para empresas y eventos en Pasto, con envíos protegidos y opciones de pedidos al por mayor.
+              </p>
+            </details>
+            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                ¿Ofrecen chalecos para moto y empresa?
+                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+              </summary>
+              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                Fabricamos chalecos reflectivos con bolsillos, cierres y personalización en DTF o bordado para mensajería, seguridad y logística en todo el sur del país.
               </p>
             </details>
           </div>

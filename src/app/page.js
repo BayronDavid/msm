@@ -1,27 +1,46 @@
 import ContactSection from '@/components/ContactSection';
 import LazyImageCarousel from '@/components/LazyImageCarousel';
 
+const HOME_KEYWORDS = [
+  "donde estampan camisetas en Sibundoy",
+  "dónde estampan camisetas en Sibundoy",
+  "camisetas personalizadas Putumayo",
+  "uniformes deportivos baratos Mocoa",
+  "estampados al por mayor Pasto",
+  "dotaciones empresariales Nariño",
+  "camisetas para campañas Pasto",
+  "fábrica de uniformes envíos al sur",
+  "mugs con foto Mocoa",
+  "gorras bordadas personalizadas Pasto",
+  "chalecos para moto y empresa",
+  "buzos prom 11 Putumayo y Nariño",
+  "diseño grafico express sur de colombia",
+  "diseño gráfico express sur de Colombia",
+  "estampado dtf sibundoy",
+  "merchandising corporativo sur de colombia"
+];
+
 export const metadata = {
-  title: "Estampados y Merchandising en Sibundoy | MORALISIMO Estampado & Diseño",
+  title: "Estampado de camisetas en Sibundoy y Putumayo | MORALISIMO Estampado & Diseño",
   description:
-    "Uniformes empresariales, diseño de marca y merchandising personalizado con entregas ágiles en Sibundoy y Putumayo.",
-  keywords: [
-    "estampado DTF Sibundoy",
-    "uniformes empresariales Putumayo",
-    "merchandising corporativo sur de Colombia",
-    "sublimación Sibundoy",
-    "diseño de marca express"
-  ],
+    "Taller textil en Sibundoy especializado en camisetas personalizadas para Putumayo, uniformes deportivos baratos en Mocoa, estampados al por mayor en Pasto y dotaciones empresariales para Nariño.",
+  keywords: HOME_KEYWORDS,
+  alternates: {
+    canonical: "https://moralisimo.com/"
+  },
   openGraph: {
-    title: "Estampados y Merchandising en Sibundoy | MORALISIMO Estampado & Diseño",
+    title: "Estampado de camisetas en Sibundoy y Putumayo | MORALISIMO Estampado & Diseño",
     description:
-      "Soluciones de identidad, uniformes personalizados y regalos corporativos en Sibundoy, Putumayo."
+      "Producción express de camisetas personalizadas, uniformes deportivos y merchandising con entregas hacia Putumayo, Mocoa, Pasto y Nariño.",
+    url: "https://moralisimo.com/",
+    locale: "es_CO",
+    type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Estampados y Merchandising en Sibundoy | MORALISIMO Estampado & Diseño",
+    title: "Estampado y merchandising para el sur de Colombia",
     description:
-      "Diseño y producción de uniformes, mugs, gorras y piezas gráficas con tiempos express."
+      "Camisetas personalizadas en Putumayo, uniformes deportivos económicos en Mocoa y dotaciones empresariales para Nariño con entregas rápidas."
   }
 };
 
@@ -130,6 +149,38 @@ export default async function Home() {
     mainEntity: [
       {
         "@type": "Question",
+        name: "¿Dónde estampan camisetas en Sibundoy?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Contamos con un taller operativo en Sibundoy donde recibimos pedidos, aprobamos diseños y coordinamos entregas o recogidas con cita previa."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "¿Ofrecen camisetas personalizadas Putumayo?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Producimos camisetas personalizadas para empresas, eventos y emprendimientos en todo Putumayo con envíos rastreables y asesoría en tallajes."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "¿Tienen uniformes deportivos baratos Mocoa?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Disponemos de líneas deportivas económicas con numeración individual y entregas consolidadas hacia Mocoa."
+        }
+      },
+      {
+        "@type": "Question",
+        name: "¿Cubren estampados al por mayor Pasto y Nariño?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Consolidamos pedidos mayoristas para Pasto, Ipiales y demás municipios de Nariño con control de color y empaques por punto de entrega."
+        }
+      },
+      {
+        "@type": "Question",
         name: "¿En qué ciudades entregan los pedidos de estampado?",
         acceptedAnswer: {
           "@type": "Answer",
@@ -154,7 +205,36 @@ export default async function Home() {
       }
     ]
   };
-  const structuredDataJson = JSON.stringify([serviceSchema, faqSchema]);
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "MORALISIMO Estampado & Diseño",
+    url: "https://moralisimo.com",
+    telephone: "+57 3001234567",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Sibundoy",
+      addressRegion: "Putumayo",
+      addressCountry: "CO"
+    },
+    areaServed: ["Sibundoy", "Putumayo", "Mocoa", "Pasto", "Nariño"],
+    knowsAbout: HOME_KEYWORDS,
+    sameAs: [
+      "https://www.instagram.com/_moralisimo",
+      "https://www.facebook.com/profile.php?id=61579614505129",
+      "https://www.tiktok.com/@moralisimo"
+    ],
+    makesOffer: HOME_KEYWORDS.map((phrase) => ({
+      "@type": "Offer",
+      name: phrase,
+      itemOffered: {
+        "@type": "Service",
+        name: phrase
+      },
+      areaServed: ["Putumayo", "Nariño", "Sur de Colombia"]
+    }))
+  };
+  const structuredDataJson = JSON.stringify([serviceSchema, faqSchema, localBusinessSchema]);
   return (
     <>
       <div className="pt-20">
@@ -171,7 +251,7 @@ export default async function Home() {
               </h1>
 
               <p className="max-w-2xl mx-auto text-xl sm:text-1xl text-[#556270] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
-                En <strong>MORALISIMO Estampado & Diseño</strong> convertimos sus ideas en uniformes, regalos empresariales y piezas gráficas inolvidables. Operamos desde Sibundoy para todo Putumayo, Nariño y sur de Colombia con <strong>tiempos express, gestión ágil</strong> y economías de escala gracias a nuestra red de proveedores directos.
+                En <strong>MORALISIMO Estampado & Diseño</strong> convertimos sus ideas en uniformes, regalos empresariales y piezas gráficas inolvidables. Si buscas “donde estampan camisetas en Sibundoy” o “camisetas personalizadas Putumayo”, somos el taller local que resuelve con <strong>diseño gráfico express sur de Colombia</strong>. También producimos <strong>uniformes deportivos baratos Mocoa</strong>, dotaciones y campañas para Pasto y Nariño con entregas coordinadas.
               </p>
 
               <div className="mt-8 max-w-2xl mx-auto">
@@ -251,13 +331,95 @@ export default async function Home() {
                         <div className="bg-white p-3 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-t-4 border-t-[#1A1A1A]">
                           <h3 className="text-2xl tracking-wider mb-2 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>ESTRUCTURA MÍNIMA Y DIRECTA</h3>
                           <p className="text-[#556270] text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-                            Operamos sin pagar renta de local. Al eliminar los costos fijos elevados, le garantizamos que su inversión se destina <strong>directamente</strong> a la calidad del producto y no a gastos operativos innecesarios.
+                            Operamos sin pagar renta de local. Al eliminar los costos fijos elevados, le garantizamos que su inversión se destina <strong>directamente</strong> a la calidad del producto y no a gastos operativos innecesarios, incluso en proyectos de <strong>dotaciones empresariales Nariño</strong> o envíos masivos hacia Pasto y Putumayo.
                           </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+          </div>
+        </section>
+
+        <section id="regional" className="py-16 bg-[#fefefe] border-b border-[#E5E7EB]">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <h2 className="text-4xl sm:text-5xl text-center mb-6 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+              Estampamos y enviamos al sur de Colombia
+            </h2>
+            <p className="max-w-4xl mx-auto text-center text-sm text-[#556270] mb-12" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Somos la <strong>fábrica de uniformes envíos al sur</strong> pensada para Putumayo, Mocoa, Pasto y Nariño. Coordinamos producción y logística propia para dotaciones empresariales, campañas y lanzamientos regionales.
+            </p>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>¿Dónde estampan camisetas en Sibundoy?</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Operamos un laboratorio textil en Sibundoy que atiende pedidos urgentes, personalización unitaria y proyectos empresariales. Agendamos entregas locales o recogidas con cita previa.
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Camisetas personalizadas Putumayo</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Atendemos colegios, emprendimientos y eventos en todo Putumayo con DTF, sublimación y vinilo textil. Coordinamos rutas semanales para que su pedido llegue listo a Valle del Guamuez, Puerto Asís y municipios vecinos.
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Uniformes deportivos baratos Mocoa</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Nuestra red de talleres aliados nos permite producir uniformes deportivos completos para clubes y colegios de Mocoa con tarifas mayoristas, numeración individual y entregas express.
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Estampados al por mayor Pasto</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Consolidamos producción por lotes para agencias, ferias y campañas que operan en Pasto. Entregamos camisetas y piezas promocionales listas para distribución con control de color y calidad.
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Dotaciones empresariales Nariño</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Diseñamos dotaciones completas para empresas de servicios, industria y logística en Nariño. Incluimos chalecos, camisas, buzos y piezas exteriores listas para personalizar con bordado o DTF.
+                </p>
+              </div>
+              <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Camisetas para campañas Pasto</h3>
+                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Planeamos producciones escalables para brigadas, campañas políticas y eventos culturales en Pasto. Numeramos por persona, entregamos en sets y gestionamos reposiciones rápidas.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-12">
+              <h3 className="text-3xl text-[#1A1A1A] mb-4 text-center" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+                Soluciones producto – problema
+              </h3>
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                  <h4 className="text-xl text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Mugs con foto Mocoa</h4>
+                  <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Personalizamos mugs y vasos térmicos con fotos familiares, logos o mensajes corporativos. Empaques listos para regalo y entregas protegidas para envíos a Mocoa.
+                  </p>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                  <h4 className="text-xl text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Gorras bordadas personalizadas Pasto</h4>
+                  <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Bordamos gorras premium con hilos de alto contraste, escudos y slogans para equipos corporativos y eventos en Pasto. Cubrimos pedidos pequeños y al por mayor.
+                  </p>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                  <h4 className="text-xl text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Chalecos para moto y empresa</h4>
+                  <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Fabricamos chalecos reflectivos para mensajería urbana, empresas de seguridad y logística. Incluimos bolsillos, numeración y franjas de alta visibilidad listos para estampado o bordado.
+                  </p>
+                </div>
+                <div className="bg-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] border border-[#F0F0F0]">
+                  <h4 className="text-xl text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Buzos prom 11 Putumayo y Nariño</h4>
+                  <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Diseñamos buzos personalizados para promociones escolares en Putumayo y Nariño con ilustraciones creadas a medida y control de tallas por curso.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -272,7 +434,7 @@ export default async function Home() {
                   <span className="text-white" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>DISEÑO DE MARCA ÁGIL</span>
                 </div>
                 <div className="md:w-2/3 md:pl-6 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Transformamos su idea, boceto o concepto inicial en una <strong>identidad corporativa lista para imprimir</strong>. Esto incluye logo vectorial final, paleta cromática y tipografía profesional. Cero demoras, máxima precisión técnica.
+                  Transformamos su idea, boceto o concepto inicial en una <strong>identidad corporativa lista para imprimir</strong>. Esto incluye logo vectorial final, paleta cromática y tipografía profesional. Nuestro equipo de <strong>diseño grafico express sur de colombia</strong> documenta todo para entregar piezas consistentes desde la primera tirada.
                 </div>
               </div>
               <div className="flex flex-col md:flex-row items-center bg-[#282828] p-6 rounded-xl shadow-[0_10px_30px_rgba(26,26,26,0.08)] border-l-8 border-l-[#CC0000]">
@@ -280,7 +442,7 @@ export default async function Home() {
                   <span className="text-[#CC0000]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>PRODUCCIÓN DE UNIFORMES</span>
                 </div>
                 <div className="md:w-2/3 md:pl-6 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Suministro de uniformes (polos, camisetas, *hoodies*) y productos promocionales (gorras, vasos, *mugs*). Aplicamos su imagen con <strong>DTF, sublimación o vinilo de precisión</strong>, garantizando durabilidad y calidad corporativa superior.
+                  Suministro de uniformes (polos, camisetas, *hoodies*), <strong>chalecos para moto y empresa</strong> y productos promocionales (gorras bordadas, vasos, *mugs*). Aplicamos su imagen con <strong>DTF, sublimación o vinilo de precisión</strong>, garantizando durabilidad y calidad corporativa superior.
                 </div>
               </div>
             </div>
@@ -311,7 +473,7 @@ export default async function Home() {
               <div className="border border-[#F0F0F0] rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] bg-[#fefefe]">
                 <h3 className="text-2xl text-[#1A1A1A] mb-3" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Eventos institucionales y educativos</h3>
                 <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Campañas culturales, ferias y brigadas estudiantiles con camisetas, gorras y pendones producidos en tiempos récord.
+                  Campañas culturales, ferias y brigadas estudiantiles con camisetas, gorras y pendones producidos en tiempos récord, incluyendo <strong>buzos prom 11 Putumayo y Nariño</strong> con identidad propia para cada curso.
                 </p>
               </div>
               <div className="border border-[#F0F0F0] rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.06)] bg-[#fefefe]">
@@ -330,6 +492,42 @@ export default async function Home() {
               Preguntas frecuentes
             </h2>
             <div className="space-y-4">
+              <details className="group bg-white border border-[#E5E7EB] rounded-xl p-5 shadow-sm">
+                <summary className="flex items-center justify-between cursor-pointer text-base font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Dónde estampan camisetas en Sibundoy?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Nuestro taller principal está en Sibundoy. Allí recibimos pedidos, hacemos aprobación de diseño y coordinamos entregas locales o recogidas programadas. También trabajamos vía WhatsApp para clientes que se encuentran fuera del valle de Sibundoy.
+                </p>
+              </details>
+              <details className="group bg-white border border-[#E5E7EB] rounded-xl p-5 shadow-sm">
+                <summary className="flex items-center justify-between cursor-pointer text-base font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Ofrecen camisetas personalizadas Putumayo?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Sí. Trabajamos camisetas en algodón, poliéster y mezclas especiales para empresas, emprendimientos y eventos en todo Putumayo. Realizamos despachos con guía rastreable y asistencia en tallajes.
+                </p>
+              </details>
+              <details className="group bg-white border border-[#E5E7EB] rounded-xl p-5 shadow-sm">
+                <summary className="flex items-center justify-between cursor-pointer text-base font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Tienen uniformes deportivos baratos Mocoa?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Ofrecemos líneas deportivas con materiales transpirables y numeración personalizada para clubes de Mocoa. Cotizamos por kits completos e incluimos envío consolidado hacia la capital del Putumayo.
+                </p>
+              </details>
+              <details className="group bg-white border border-[#E5E7EB] rounded-xl p-5 shadow-sm">
+                <summary className="flex items-center justify-between cursor-pointer text-base font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Cubren estampados al por mayor Pasto y Nariño?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Sí. Consolidamos pedidos de alto volumen para agencias, instituciones y empresas en Pasto e Ipiales. Preparamos empaques por punto de entrega y ofrecemos seguimiento constante hasta su destino en Nariño.
+                </p>
+              </details>
               <details className="group bg-white border border-[#E5E7EB] rounded-xl p-5 shadow-sm">
                 <summary className="flex items-center justify-between cursor-pointer text-base font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
                   ¿En qué ciudades entregan los pedidos?

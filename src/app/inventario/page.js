@@ -3,28 +3,40 @@ import Image from "next/image";
 import supabase from "@/lib/supabaseClient";
 import NoSnapDisable from '@/components/NoSnapDisable';
 
+const INVENTARIO_KEYWORDS = [
+  "inventario camisetas personalizadas Putumayo",
+  "uniformes deportivos baratos Mocoa",
+  "estampados al por mayor Pasto",
+  "dotaciones empresariales Nariño",
+  "gorras bordadas personalizadas Pasto",
+  "mugs con foto Mocoa",
+  "chalecos para moto y empresa",
+  "buzos prom 11 Putumayo y Nariño",
+  "fábrica de uniformes envíos al sur",
+  "diseño grafico express sur de colombia",
+  "diseño gráfico express sur de Colombia"
+];
+
 export const metadata = {
-  title: "Inventario de estampados en Sibundoy | MORALISIMO Estampado & Diseño",
+  title: "Inventario camisetas personalizadas Putumayo | MORALISIMO Estampado & Diseño",
   description:
-    "Inventario vivo de uniformes y merchandising personalizado producido por MORALISIMO Estampado & Diseño en Sibundoy, Putumayo. Actualización en tiempo real con Supabase.",
-  keywords: [
-    "inventario de estampados",
-    "uniformes personalizados Putumayo",
-    "merchandising corporativo Sibundoy",
-    "dtf y sublimación",
-    "ropa empresarial sur de Colombia"
-  ],
+    "Explora inventario vivo de camisetas personalizadas en Putumayo, uniformes deportivos baratos para Mocoa, estampados al por mayor en Pasto y dotaciones empresariales para Nariño.",
+  keywords: INVENTARIO_KEYWORDS,
+  alternates: {
+    canonical: "https://moralisimo.com/inventario"
+  },
   openGraph: {
-    title: "Inventario de estampados en Sibundoy | MORALISIMO Estampado & Diseño",
+    title: "Inventario MORALISIMO | Uniformes y merchandising para el sur de Colombia",
     description:
-      "Consulta referencias de camisetas, hoodies, gorras y regalos empresariales listos para producción express desde Sibundoy, Putumayo.",
-    url: "https://moralisimo.com/inventario"
+      "Consulta camisetas, chalecos, gorras y mugs personalizados listos para producción y envío hacia Putumayo, Mocoa, Pasto y Nariño.",
+    url: "https://moralisimo.com/inventario",
+    locale: "es_CO"
   },
   twitter: {
     card: "summary_large_image",
     title: "Inventario MORALISIMO",
     description:
-      "Referencias conectadas a Supabase con stock actualizado para uniformes y merchandising corporativo."
+      "Referencias conectadas a Supabase con stock actualizado para uniformes y merchandising que se envían al sur del país."
   }
 };
 
@@ -226,6 +238,7 @@ function buildProductStructuredData(products) {
     name: "Inventario MORALISIMO Estampado & Diseño",
     description:
       "Listado de uniformes, merchandising y productos personalizables disponibles para producción en Sibundoy, Putumayo.",
+    keywords: INVENTARIO_KEYWORDS,
     itemListElement: limited.map((product, index) => {
       const price = Number(product.salePrice ?? product.regularPrice ?? 0);
       const offer = {
@@ -406,6 +419,27 @@ export default async function InventarioPage() {
                 </div>
               </div>
             </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-left">
+                <h3 className="text-2xl mb-2" style={{ fontFamily: "Bebas Neue, sans-serif" }}>Camisetas personalizadas Putumayo</h3>
+                <p className="text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  Tenencia de referencias para empresas, colegios y campañas regionales. Incluye líneas económicas y premium con entrega coordinada hacia Valle del Guamuez, Puerto Asís y Sibundoy.
+                </p>
+              </div>
+              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-left">
+                <h3 className="text-2xl mb-2" style={{ fontFamily: "Bebas Neue, sans-serif" }}>Uniformes deportivos baratos Mocoa</h3>
+                <p className="text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  Kits completos para clubes y escuelas deportivas con numeración, personalización y opciones de envío express a Mocoa.
+                </p>
+              </div>
+              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-left sm:col-span-2">
+                <h3 className="text-2xl mb-2" style={{ fontFamily: "Bebas Neue, sans-serif" }}>Estampados al por mayor Pasto y Nariño</h3>
+                <p className="text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  Consolidamos lotes para agencias, dotaciones empresariales y campañas ciudadanas en Pasto, Ipiales y Tumaco. Empaques por sede, control de color y guía rastreable.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -413,7 +447,7 @@ export default async function InventarioPage() {
           <div className="container mx-auto px-4 max-w-4xl">
             <div className="mx-auto text-center text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
               <p className="mb-4">Nuestro inventario en línea presenta las familias de producto y las referencias más solicitadas. Si necesita un precio exacto por cantidad, tallas o personalizaciones, solicite una cotización por WhatsApp o usando el formulario de contacto.</p>
-              <p>Operamos desde Sibundoy y despachamos hacia Putumayo, Nariño y ciudades del sur de Colombia. Para consultas directas use <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] underline">bayrondavid@moralisimo.com</a> o nuestro WhatsApp.</p>
+              <p>Operamos desde Sibundoy y despachamos hacia Putumayo, Nariño y ciudades del sur de Colombia. Encontrará <strong>mugs con foto Mocoa</strong>, <strong>gorras bordadas personalizadas Pasto</strong> y <strong>chalecos para moto y empresa</strong> con disponibilidad real. Para consultas directas use <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] underline">bayrondavid@moralisimo.com</a> o nuestro WhatsApp.</p>
             </div>
           </div>
         </section>
@@ -424,8 +458,8 @@ export default async function InventarioPage() {
               Cómo solicitar su producción
             </h2>
             <ol className="space-y-4 list-decimal list-inside text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
-              <li>Seleccione la referencia y el SKU que desea producir. Use el botón de WhatsApp para compartir cantidades, tallas y fechas.</li>
-              <li>Adjunte su logo o pida el servicio de diseño. Enviamos simulación digital en cuestión de horas.</li>
+              <li>Seleccione la referencia y el SKU que desea producir. Use el botón de WhatsApp para compartir cantidades, tallas y fechas, incluyendo proyectos como <strong>buzos prom 11 Putumayo y Nariño</strong> o lotes de chalecos para moto.</li>
+              <li>Adjunte su logo o pida el servicio de diseño. Enviamos simulación digital en cuestión de horas con nuestro <strong>diseño grafico express sur de colombia</strong>.</li>
               <li>Definimos técnica (DTF, sublimación o vinilo) y agendamos producción. Entregamos en 3 a 5 días hábiles, con opción express según disponibilidad.</li>
             </ol>
             <p className="mt-6 text-sm text-[#556270]" style={{ fontFamily: "Inter, sans-serif" }}>
