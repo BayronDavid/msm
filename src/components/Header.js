@@ -26,11 +26,11 @@ export default function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         <div className="flex items-center space-x-2">
           {/* Reemplazamos las letras MSM por el SVG en public/MSM cuadros.svg */}
-          <div className={`flex items-center transition-all duration-300 ${isScrolled ? 'h-9 sm:h-10' : 'h-12 sm:h-14'}`}>
+          <div className={`flex items-center shrink-0 transition-all duration-300 ${isScrolled ? 'h-9 sm:h-10' : 'h-12 sm:h-14'}`}>
             <img
               src="/MSM%20cuadros.svg"
               alt="MSM logo"
-              className="h-full w-auto"
+              className="h-full w-auto object-contain"
               style={{ display: 'block'}}
             />
           </div>
