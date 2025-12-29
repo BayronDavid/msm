@@ -72,10 +72,11 @@ export default function ImageCarousel({ images = [], interval = 3500, alt = '', 
 
   return (
     <div
-      className={`relative w-full h-full mb-4 overflow-hidden rounded-lg ${className}`}
+      className={`relative w-full h-full mb-4 overflow-hidden rounded-lg touch-pan-y select-none ${className}`}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerCancel}
+      onPointerLeave={handlePointerCancel}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       role="region"
@@ -105,6 +106,7 @@ export default function ImageCarousel({ images = [], interval = 3500, alt = '', 
               muted
               playsInline
               loop
+              draggable={false}
               preload={isActive ? 'auto' : 'metadata'}
               className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ease-in-out ${
                 isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
@@ -120,6 +122,7 @@ export default function ImageCarousel({ images = [], interval = 3500, alt = '', 
             src={src}
             alt={alt || `slide-${i + 1}`}
             loading="lazy"
+            draggable={false}
             className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-700 ease-in-out ${
               isActive ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}

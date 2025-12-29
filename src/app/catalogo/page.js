@@ -160,174 +160,176 @@ export default function CatalogoPage() {
     <>
       <NoSnapDisable />
       <main className="pt-20">
-      <section className="bg-white min-h-screen flex items-center pt-16 pb-16 sm:pt-24 sm:pb-24 border-b-8 border-[#CC0000]">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl sm:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>MORALISIMO (MSM)</h1>
-          <h4 className="text-4xl sm:text-5xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>{EMBR_TITLE}</h4>
-          <p className="uppercase text-sm tracking-[0.3em] text-[#9AA0A6] mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Sibundoy | Putumayo | Colombia
-          </p>
-          <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>{EMBR_LEMA}</p>
-          <p className="max-w-3xl mx-auto text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Más abajo encontrarás nuestros productos más vendidos y sus precios de referencia. Este catálogo es ideal para estimar presupuestos rápidos; el valor final se confirma al compartir cantidades, tallas y uso de la prenda. Aquí podrás cotizar <strong>uniformes deportivos baratos Mocoa</strong>, <strong>estampados al por mayor Pasto</strong> y <strong>dotaciones empresariales Nariño</strong> en un solo lugar.
-          </p>
-          <div className="max-w-3xl mx-auto text-sm text-[#1A1A1A] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
-            <p className="mb-2">Contacto directo: <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] font-semibold underline">bayrondavid@moralisimo.com</a></p>
-            <p className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.18em] text-[#556270]">
-              <a href="https://www.instagram.com/_moralisimo" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">Instagram</a>
-              <a href="https://www.tiktok.com/@moralisimo" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">TikTok</a>
-              <a href="https://www.facebook.com/profile.php?id=61579614505129" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">Facebook</a>
+
+        <section className="py-12 bg-[#fefefe]">
+          <div className="container mx-auto px-4 max-w-6xl">
+            <p className="text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>{CATALOGO_DATA.nota_importante_precios}</p>
+
+            <div className="flex flex-col gap-8">
+              {CATALOGO_DATA.productos.map((p, i) => (
+                <ProductRow key={p.nombre} p={p} reverse={i % 2 === 0} />
+              ))}
+            </div>
+
+            {/* Servicio de Diseño: tabla sencilla */}
+            <div className="mt-12 bg-white border border-[#F0F0F0] rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.04)]">
+              <h2 className="text-2xl mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Servicio de Diseño</h2>
+              <div className="grid grid-cols-1 gap-4">
+                <div className="flex flex-col md:flex-row md:items-start md:gap-6">
+                  <div className="md:w-1/3 text-sm font-semibold text-[#1A1A1A]">Adaptación Técnica (Logo Existente)</div>
+                  <div className="md:flex-1 text-sm text-[#556270]">Perfeccionamiento de su archivo (foto de WhatsApp, imagen borrosa, etc.) para que quede con la calidad perfecta de impresión. Incluye la simulación virtual del producto.</div>
+                  <div className="md:w-48 text-sm font-semibold text-[#1A1A1A] text-right">GRATIS (Servicio incluido para garantizar la calidad final de su estampado).</div>
+                </div>
+
+                <div className="flex flex-col md:flex-row md:items-start md:gap-6">
+                  <div className="md:w-1/3 text-sm font-semibold text-[#1A1A1A]">Conceptualización de Marca</div>
+                  <div className="md:flex-1 text-sm text-[#556270]">Si solo tiene una idea o necesita un rediseño que implique crear nuevos elementos gráficos, tipografía y estructuras. Generación de una (1) propuesta base + dos ajustes. Nuestro <strong>diseño grafico express sur de colombia</strong> asegura archivos listos para impresión en horas.</div>
+                  <div className="md:w-48 text-sm font-semibold text-[#1A1A1A] text-right">Desde {numberFmt.format(55000)} COP (Se cotiza según la complejidad de la idea)</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 text-center">
+              <p className="text-sm text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>Estos son nuestros productos más vendidos. Revisa nuestro inventario completo y solicita la cotización para obtener precio final exacto.</p>
+              <a href="/inventario" className="block w-full sm:inline-block sm:w-auto max-w-xs mx-auto px-6 py-3 bg-[#1A1A1A] text-white font-bold uppercase rounded-xl shadow-md text-center" style={{ fontFamily: 'Inter, sans-serif' }}>Ir al inventario</a>
+            </div>
+          </div>
+        </section>
+
+
+        <section className="bg-white min-h-screen flex items-center pt-16 pb-16 sm:pt-24 sm:pb-24 border-b-8 border-[#CC0000]">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl sm:text-6xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>MORALISIMO (MSM)</h1>
+            <h4 className="text-4xl sm:text-5xl tracking-wide mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>{EMBR_TITLE}</h4>
+            <p className="uppercase text-sm tracking-[0.3em] text-[#9AA0A6] mb-3" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Sibundoy | Putumayo | Colombia
             </p>
+            <p className="max-w-3xl mx-auto text-xl sm:text-2xl text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>{EMBR_LEMA}</p>
+            <p className="max-w-3xl mx-auto text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Más abajo encontrarás nuestros productos más vendidos y sus precios de referencia. Este catálogo es ideal para estimar presupuestos rápidos; el valor final se confirma al compartir cantidades, tallas y uso de la prenda. Aquí podrás cotizar <strong>uniformes deportivos baratos Mocoa</strong>, <strong>estampados al por mayor Pasto</strong> y <strong>dotaciones empresariales Nariño</strong> en un solo lugar.
+            </p>
+            <div className="max-w-3xl mx-auto text-sm text-[#1A1A1A] mb-8" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <p className="mb-2">Contacto directo: <a href="mailto:bayrondavid@moralisimo.com" className="text-[#CC0000] font-semibold underline">bayrondavid@moralisimo.com</a></p>
+              <p className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.18em] text-[#556270]">
+                <a href="https://www.instagram.com/_moralisimo" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">Instagram</a>
+                <a href="https://www.tiktok.com/@moralisimo" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">TikTok</a>
+                <a href="https://www.facebook.com/profile.php?id=61579614505129" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-[#F7F7F7] rounded-full hover:bg-[#CC0000] hover:text-white transition">Facebook</a>
+              </p>
+            </div>
+            <div className="max-w-4xl mx-auto mb-10">
+              <div className="grid gap-4 sm:grid-cols-2 text-left">
+                <div className="bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+                  <h5 className="text-lg text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Paquetes regionales destacados</h5>
+                  <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Combo de <strong>camisetas personalizadas Putumayo</strong> con numeración individual, además de <strong>buzos prom 11 Putumayo y Nariño</strong> listos para entrega antes de ceremonias escolares.
+                  </p>
+                </div>
+                <div className="bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+                  <h5 className="text-lg text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Merchandising a medida</h5>
+                  <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                    Incluimos <strong>mugs con foto Mocoa</strong>, <strong>gorras bordadas personalizadas Pasto</strong> y <strong>chalecos para moto y empresa</strong> con reflectivos para cuadrillas urbanas.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full max-w-lg mx-auto">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a
+                  href="/inventario"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#CC0000] text-white font-semibold rounded-md border border-transparent hover:bg-[#b30000] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CC0000] transition-transform"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Ver inventario completo
+                </a>
+
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#1A1A1A] text-white font-semibold rounded-md border border-transparent hover:bg-[#333333] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CC0000] transition-transform"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                >
+                  Solicitar cotización
+                </a>
+
+                <a
+                  href="/"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 bg-white text-[#1A1A1A] font-semibold rounded-md border border-[#E5E7EB] hover:bg-[#fafafa] transition"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  aria-label="Ver propuesta de valor"
+                >
+                  Ver propuesta de valor
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="max-w-4xl mx-auto mb-10">
-            <div className="grid gap-4 sm:grid-cols-2 text-left">
-              <div className="bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
-                <h5 className="text-lg text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Paquetes regionales destacados</h5>
-                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Combo de <strong>camisetas personalizadas Putumayo</strong> con numeración individual, además de <strong>buzos prom 11 Putumayo y Nariño</strong> listos para entrega antes de ceremonias escolares.
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <h2 className="text-3xl text-[#1A1A1A] mb-6" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+              Política de precios y tiempos de entrega
+            </h2>
+            <p className="text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+              Los valores publicados son base para proyectos locales en Sibundoy y Putumayo. Para envíos nacionales ajustamos costos logísticos según destino. Las órdenes express pueden incluir recargo si requieren priorización de máquina.
+            </p>
+            <div className="space-y-4">
+              <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+                <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Los precios incluyen diseño?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Incluimos adaptación técnica del logo sin costo para garantizar calidad de impresión. Conceptos nuevos o rediseños completos se cotizan aparte según alcance.
                 </p>
-              </div>
-              <div className="bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
-                <h5 className="text-lg text-[#1A1A1A] mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Merchandising a medida</h5>
-                <p className="text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                  Incluimos <strong>mugs con foto Mocoa</strong>, <strong>gorras bordadas personalizadas Pasto</strong> y <strong>chalecos para moto y empresa</strong> con reflectivos para cuadrillas urbanas.
+              </details>
+              <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+                <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Cuál es el tiempo de producción estándar?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Después de aprobar diseño y pago inicial, producimos entre 3 y 5 días hábiles. Para pedidos mayores a 100 unidades coordinamos una programación especial.
                 </p>
-              </div>
+              </details>
+              <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+                <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Qué métodos de pago aceptan?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Transferencias bancarias, Nequi y consignaciones. Para empresas emitimos factura electrónica y acuerdos de pago según política de compras.
+                </p>
+              </details>
+              <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+                <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Hacen gorras bordadas personalizadas Pasto?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Sí. Producimos gorras con bordado plano o en relieve para empresas y eventos en Pasto, con envíos protegidos y opciones de pedidos al por mayor.
+                </p>
+              </details>
+              <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
+                <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  ¿Ofrecen chalecos para moto y empresa?
+                  <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
+                </summary>
+                <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  Fabricamos chalecos reflectivos con bolsillos, cierres y personalización en DTF o bordado para mensajería, seguridad y logística en todo el sur del país.
+                </p>
+              </details>
             </div>
           </div>
-          <div className="w-full max-w-lg mx-auto">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href="/inventario"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#CC0000] text-white font-semibold rounded-md border border-transparent hover:bg-[#b30000] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CC0000] transition-transform"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Ver inventario completo
-              </a>
+        </section>
 
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 bg-[#1A1A1A] text-white font-semibold rounded-md border border-transparent hover:bg-[#333333] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#CC0000] transition-transform"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                Solicitar cotización
-              </a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: structuredDataJson }}
+        />
 
-              <a
-                href="/"
-                className="w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 bg-white text-[#1A1A1A] font-semibold rounded-md border border-[#E5E7EB] hover:bg-[#fafafa] transition"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-                aria-label="Ver propuesta de valor"
-              >
-                Ver propuesta de valor
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 bg-[#fefefe]">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <p className="text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>{CATALOGO_DATA.nota_importante_precios}</p>
-
-          <div className="flex flex-col gap-8">
-            {CATALOGO_DATA.productos.map((p, i) => (
-              <ProductRow key={p.nombre} p={p} reverse={i % 2 === 0} />
-            ))}
-          </div>
-
-          {/* Servicio de Diseño: tabla sencilla */}
-          <div className="mt-12 bg-white border border-[#F0F0F0] rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.04)]">
-            <h2 className="text-2xl mb-4 text-[#1A1A1A]" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>Servicio de Diseño</h2>
-            <div className="grid grid-cols-1 gap-4">
-              <div className="flex flex-col md:flex-row md:items-start md:gap-6">
-                <div className="md:w-1/3 text-sm font-semibold text-[#1A1A1A]">Adaptación Técnica (Logo Existente)</div>
-                <div className="md:flex-1 text-sm text-[#556270]">Perfeccionamiento de su archivo (foto de WhatsApp, imagen borrosa, etc.) para que quede con la calidad perfecta de impresión. Incluye la simulación virtual del producto.</div>
-                <div className="md:w-48 text-sm font-semibold text-[#1A1A1A] text-right">GRATIS (Servicio incluido para garantizar la calidad final de su estampado).</div>
-              </div>
-
-              <div className="flex flex-col md:flex-row md:items-start md:gap-6">
-                <div className="md:w-1/3 text-sm font-semibold text-[#1A1A1A]">Conceptualización de Marca</div>
-                <div className="md:flex-1 text-sm text-[#556270]">Si solo tiene una idea o necesita un rediseño que implique crear nuevos elementos gráficos, tipografía y estructuras. Generación de una (1) propuesta base + dos ajustes. Nuestro <strong>diseño grafico express sur de colombia</strong> asegura archivos listos para impresión en horas.</div>
-                <div className="md:w-48 text-sm font-semibold text-[#1A1A1A] text-right">Desde {numberFmt.format(55000)} COP (Se cotiza según la complejidad de la idea)</div>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-8 text-center">
-            <p className="text-sm text-[#556270] mb-4" style={{ fontFamily: 'Inter, sans-serif' }}>Estos son nuestros productos más vendidos. Revisa nuestro inventario completo y solicita la cotización para obtener precio final exacto.</p>
-            <a href="/inventario" className="block w-full sm:inline-block sm:w-auto max-w-xs mx-auto px-6 py-3 bg-[#1A1A1A] text-white font-bold uppercase rounded-xl shadow-md text-center" style={{ fontFamily: 'Inter, sans-serif' }}>Ir al inventario</a>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="text-3xl text-[#1A1A1A] mb-6" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-            Política de precios y tiempos de entrega
-          </h2>
-          <p className="text-sm text-[#556270] mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Los valores publicados son base para proyectos locales en Sibundoy y Putumayo. Para envíos nacionales ajustamos costos logísticos según destino. Las órdenes express pueden incluir recargo si requieren priorización de máquina.
-          </p>
-          <div className="space-y-4">
-            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
-              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                ¿Los precios incluyen diseño?
-                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
-              </summary>
-              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Incluimos adaptación técnica del logo sin costo para garantizar calidad de impresión. Conceptos nuevos o rediseños completos se cotizan aparte según alcance.
-              </p>
-            </details>
-            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
-              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                ¿Cuál es el tiempo de producción estándar?
-                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
-              </summary>
-              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Después de aprobar diseño y pago inicial, producimos entre 3 y 5 días hábiles. Para pedidos mayores a 100 unidades coordinamos una programación especial.
-              </p>
-            </details>
-            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
-              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                ¿Qué métodos de pago aceptan?
-                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
-              </summary>
-              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Transferencias bancarias, Nequi y consignaciones. Para empresas emitimos factura electrónica y acuerdos de pago según política de compras.
-              </p>
-            </details>
-            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
-              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                ¿Hacen gorras bordadas personalizadas Pasto?
-                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
-              </summary>
-              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Sí. Producimos gorras con bordado plano o en relieve para empresas y eventos en Pasto, con envíos protegidos y opciones de pedidos al por mayor.
-              </p>
-            </details>
-            <details className="group bg-[#F7F7F7] border border-[#E5E7EB] rounded-xl p-5">
-              <summary className="flex items-center justify-between cursor-pointer text-sm font-semibold text-[#1A1A1A]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                ¿Ofrecen chalecos para moto y empresa?
-                <span className="text-[#CC0000] group-open:rotate-180 transition-transform">⌄</span>
-              </summary>
-              <p className="mt-3 text-sm text-[#556270]" style={{ fontFamily: 'Inter, sans-serif' }}>
-                Fabricamos chalecos reflectivos con bolsillos, cierres y personalización en DTF o bordado para mensajería, seguridad y logística en todo el sur del país.
-              </p>
-            </details>
-          </div>
-        </div>
-      </section>
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: structuredDataJson }}
-      />
-
-      <ContactSection />
-    </main>
+        <ContactSection />
+      </main>
     </>
   );
 }

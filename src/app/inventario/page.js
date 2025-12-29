@@ -377,71 +377,6 @@ export default async function InventarioPage() {
     <>
       <NoSnapDisable />
       <main>
-        <section className="bg-[#1A1A1A] text-white pt-20 pb-16 sm:pt-24 sm:pb-28 border-b-8 border-[#CC0000]">
-          <div className="container mx-auto px-6 sm:px-4 max-w-5xl text-center">
-
-            <p className="uppercase text-sm tracking-[0.3em] text-[#F6C5C5] mb-4" style={{ fontFamily: "Inter, sans-serif" }}>
-              Inventario Completo
-            </p>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide mb-6" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
-              Estás viendo nuestro inventario completo
-            </h1>
-
-            <p className="text-base sm:text-lg text-[#E4E8EE] mb-8" style={{ fontFamily: "Inter, sans-serif" }}>
-              Esta página contiene todas nuestras referencias y SKUs. Si buscas ejemplos de trabajos, fotos de productos reales y precios base para un presupuesto rápido, te recomendamos visitar primero nuestro:
-            </p>
-
-            <a
-              href="/catalogo"
-              className="inline-block px-8 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105"
-              style={{ fontFamily: "Inter, sans-serif" }}
-            >
-              Ver Catálogo Rápido (Precios y Ejemplos)
-            </a>
-
-            <p className="mt-6 text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
-              Si prefieres explorar todas las familias de productos o ya sabes lo que buscas, solo sigue bajando.
-            </p>
-
-            <div className="mt-8">
-              <div className="w-full">
-                <div className="flex flex-wrap justify-center gap-3 px-4 sm:px-6" style={{ fontFamily: "Inter, sans-serif" }}>
-                  {categoryNames.map((category) => (
-                    <a
-                      key={category}
-                      href={`#${slugify(category)}`}
-                      className="px-4 py-2 rounded-full bg-white text-[#1A1A1A] border border-[#E5E7EB] hover:border-[#CC0000] hover:text-[#CC0000] transition text-sm uppercase tracking-[0.14em]"
-                    >
-                      {category}
-                    </a>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-left">
-                <h3 className="text-2xl mb-2" style={{ fontFamily: "Bebas Neue, sans-serif" }}>Camisetas personalizadas Putumayo</h3>
-                <p className="text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Tenencia de referencias para empresas, colegios y campañas regionales. Incluye líneas económicas y premium con entrega coordinada hacia Valle del Guamuez, Puerto Asís y Sibundoy.
-                </p>
-              </div>
-              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-left">
-                <h3 className="text-2xl mb-2" style={{ fontFamily: "Bebas Neue, sans-serif" }}>Uniformes deportivos baratos Mocoa</h3>
-                <p className="text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Kits completos para clubes y escuelas deportivas con numeración, personalización y opciones de envío express a Mocoa.
-                </p>
-              </div>
-              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-left sm:col-span-2">
-                <h3 className="text-2xl mb-2" style={{ fontFamily: "Bebas Neue, sans-serif" }}>Estampados al por mayor Pasto y Nariño</h3>
-                <p className="text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
-                  Consolidamos lotes para agencias, dotaciones empresariales y campañas ciudadanas en Pasto, Ipiales y Tumaco. Empaques por sede, control de color y guía rastreable.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
 
         <section className="py-12 bg-white">
           <div className="container mx-auto px-4 max-w-4xl">
@@ -522,6 +457,72 @@ export default async function InventarioPage() {
           </div>
         </section>
 
+        <section className="bg-[#1A1A1A] text-white pt-20 pb-16 sm:pt-24 sm:pb-28 border-b-8 border-[#CC0000]">
+          <div className="container mx-auto px-6 sm:px-4 max-w-5xl text-center">
+
+            <p className="uppercase text-sm tracking-[0.3em] text-[#F6C5C5] mb-4" style={{ fontFamily: "Inter, sans-serif" }}>
+              Inventario Completo
+            </p>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wide mb-6" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
+              Estás viendo nuestro inventario completo
+            </h1>
+
+            <p className="text-base sm:text-lg text-[#E4E8EE] mb-8" style={{ fontFamily: "Inter, sans-serif" }}>
+              Esta página contiene todas nuestras referencias y SKUs. Si buscas ejemplos de trabajos, fotos de productos reales y precios base para un presupuesto rápido, te recomendamos visitar primero nuestro:
+            </p>
+
+            <a
+              href="/catalogo"
+              className="inline-block px-8 sm:px-10 py-3 sm:py-4 bg-[#CC0000] text-white text-base sm:text-lg font-bold uppercase tracking-wider rounded-xl transition duration-300 hover:bg-red-800 transform hover:scale-105"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              Ver Catálogo Rápido (Precios y Ejemplos)
+            </a>
+
+            <p className="mt-6 text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
+              Si prefieres explorar todas las familias de productos o ya sabes lo que buscas, solo sigue bajando.
+            </p>
+
+            <div className="mt-8">
+              <div className="w-full">
+                <div className="flex flex-wrap justify-center gap-3 px-4 sm:px-6" style={{ fontFamily: "Inter, sans-serif" }}>
+                  {categoryNames.map((category) => (
+                    <a
+                      key={category}
+                      href={`#${slugify(category)}`}
+                      className="px-4 py-2 rounded-full bg-white text-[#1A1A1A] border border-[#E5E7EB] hover:border-[#CC0000] hover:text-[#CC0000] transition text-sm uppercase tracking-[0.14em]"
+                    >
+                      {category}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-left">
+                <h3 className="text-2xl mb-2" style={{ fontFamily: "Bebas Neue, sans-serif" }}>Camisetas personalizadas Putumayo</h3>
+                <p className="text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  Tenencia de referencias para empresas, colegios y campañas regionales. Incluye líneas económicas y premium con entrega coordinada hacia Valle del Guamuez, Puerto Asís y Sibundoy.
+                </p>
+              </div>
+              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-left">
+                <h3 className="text-2xl mb-2" style={{ fontFamily: "Bebas Neue, sans-serif" }}>Uniformes deportivos baratos Mocoa</h3>
+                <p className="text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  Kits completos para clubes y escuelas deportivas con numeración, personalización y opciones de envío express a Mocoa.
+                </p>
+              </div>
+              <div className="bg-white/10 backdrop-blur border border-white/20 rounded-2xl p-6 text-left sm:col-span-2">
+                <h3 className="text-2xl mb-2" style={{ fontFamily: "Bebas Neue, sans-serif" }}>Estampados al por mayor Pasto y Nariño</h3>
+                <p className="text-sm text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
+                  Consolidamos lotes para agencias, dotaciones empresariales y campañas ciudadanas en Pasto, Ipiales y Tumaco. Empaques por sede, control de color y guía rastreable.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 max-w-5xl text-center">
             <h2 className="text-3xl text-[#1A1A1A] mb-4" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
@@ -555,20 +556,4 @@ export default async function InventarioPage() {
   );
 }
 
-function StatCard({ label, value, helper }) {
-  return (
-    <div className="bg-[#1A1A1A] text-white rounded-2xl p-6 shadow-[0_10px_30px_rgba(26,26,26,0.12)] border border-black/10">
-      <span className="text-xs uppercase tracking-[0.3em] text-[#F6C5C5]" style={{ fontFamily: "Inter, sans-serif" }}>
-        {label}
-      </span>
-      <div className="mt-3 text-4xl" style={{ fontFamily: "Bebas Neue, sans-serif" }}>
-        {value}
-      </div>
-      {helper ? (
-        <p className="mt-2 text-xs text-[#E4E8EE]" style={{ fontFamily: "Inter, sans-serif" }}>
-          {helper}
-        </p>
-      ) : null}
-    </div>
-  );
-}
+
